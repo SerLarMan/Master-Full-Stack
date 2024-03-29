@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src='https://kit.fontawesome.com/1bbcd94d9b.js' crossorigin='anonymous'></script>
+    <title>Landing Page Flex</title>
+  </head>
+
+  <body>
+    <header>
+      <div id="header-info">
+        <div>
+          <div class="language-select">
+            <label for="language">Language</label>
+            <select name="language" id="language">
+              <option value="Español">Español</option>
+              <option value="English" selected>English</option>
+            </select>
+          </div>
+
+          <div class="currency-select">
+            <label for="currency">Currency</label>
+            <select name="currency" id="currency">
+              <option value="Euro">Euro</option>
+              <option value="Dollar" selected>Dollar</option>
+            </select>
+          </div>
+
+          <div>
+            <a href="#">Sign In / Register</a>
+          </div>
+
+          <div>FREE express International delivery + EASY returns</div>
+        </div>
+
+        <div>
+          <div class="redes">
+            <a href="#"
+              ><i class="fa-brands fa-facebook-f" style="color: #3078c0"></i
+            ></a>
+            <a href="#"
+              ><i class="fa-brands fa-twitter" style="color: #17cce7"></i
+            ></a>
+            <a href="#"
+              ><i class="fa-brands fa-instagram" style="color: black"></i
+            ></a>
+            <a href="#"
+              ><i class="fa-brands fa-pinterest-p" style="color: crimson"></i
+            ></a>
+            <a href="#"
+              ><i class="fa-brands fa-youtube" style="color: red"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+
+      <div id="header-main-title">
+        <div class="phone">
+          <div>
+            <i class="fas fa-headphones"></i>
+          </div>
+          <div>
+            <span style="color: var(--aux-color); font-size: 12px"
+              ><strong>CALL US</strong></span
+            >
+            <span><strong>+84 1800 33355</strong></span>
+          </div>
+        </div>
+
+        <div>
+          <h1>Ekommart</h1>
+        </div>
+
+        <div>
+          <a href="#"><i class="fas fa-magnifying-glass"></i></a>
+          <a href="#"><i class="fas fa-user"></i></a>
+          <a href="#"><i class="fa-regular fa-heart"></i></a>
+          <a href="#"><i class="fas fa-basket-shopping"></i></a>
+          <span>$00.0</span>
+        </div>
+      </div>
+    </header>
+
+    <nav aria-label="header-navigation">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#" >Web Map</a></li>
+            <li><a href="#" >Image Gallery</a></li>
+            <li><a href="#" >News</a></li>
+            <li><a href="#" >Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="news">
+            <h2>News</h2>
+            <div>
+                <article class="first-elem" aria-label="news-article-1">
+                    <div>
+                        <div>LATEST TRENDS</div>
+                        <h3>SEASON'S Newest Arrivals</h3>
+                        <div><a href="#">SHOP NOW</a></div>
+                    </div>
+                </article>
+    
+                <article class="second-elem" aria-label="news-article-2">
+                    <div>
+                        <div>SUNWASHED PINK</div>
+                        <h3>REAL SIMPLE</h3>
+                    </div>
+                </article>
+    
+                <article class="third-elem" aria-label="news-article-3">
+                    <div>
+                        <div><strong>MIXES CROCHET</strong></div>
+                        <h3>Crochet bead bracelet</h3>
+                    </div>
+                </article>
+    
+                <article class="fourth-elem" aria-label="news-article-4">
+                    <div>
+                        <div class="thunder">
+                            <img src="images/thunder.png" alt="thunder">
+                            <span><strong>NEW</strong></span>
+                        </div>
+                        <h3>Fruit bowl earrings</h3>
+                        <div>Titanium post with disc clutch closures.</div>
+                        <div><a href="#">Shop Now</a></div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="popular">
+            <div class="flex">
+                <div>
+                    <div class="title">
+                        <h2>The most popular items</h2>
+                        <ul>
+                            <li><a href="#">Footwear</a></li>
+                            <span>·</span>
+                            <li><a href="#">Appael</a></li>
+                            <span>·</span>
+                            <li><a href="#">Outdoor</a></li>
+                            <span>·</span>
+                            <li><a href="#">Accessories</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="articles">
+                        <article aria-label="popular-article-1">
+                            <a href="#"><img src="images/popular_img1.png" alt="popular1"></a>
+                            <img src="images/rating.png" alt="rating" class="rating">
+                            <div class="subcategory">Running</div>
+                            <a href="#">
+                                <h3>Fleece Badge Of Sport Graphic Hoodie</h3>
+                            </a>
+                            <div class="price">$40.00</div>
+                        </article>
+
+                        <article aria-label="popular-article-2">
+                            <a href="#"><img src="images/popular_img2.png" alt="popular2"></a>
+                            <img src="images/rating.png" alt="rating" class="rating">
+                            <div class="subcategory">Outwear</div>
+                            <a href="#">
+                                <h3>Men's Rugged Workwear Graphic Hoodie</h3>
+                            </a>
+                            <div class="price">$59.99</div>
+                        </article>
+
+                        <article aria-label="popular-article-3">
+                            <a href="#"><img src="images/popular_img3.png" alt="popular3"></a>
+                            <img src="images/rating.png" alt="rating" class="rating">
+                            <div class="subcategory">Sweatshirt</div>
+                            <a href="#">
+                                <h3>Men's Rain Defender Rockland Sherpa-Lined</h3>
+                            </a>
+                            <div><span class="price">$40.00</span><span
+                                    style="text-decoration: line-through; margin-left: 1em;">$350.99</span></div>
+                        </article>
+                    </div>
+                </div>
+
+                <article class="last-article" aria-label="popular-article-4">
+                    <img src="images/popular_img4.png" alt="popular4">
+                    <div>
+                        <div>Accessory pick</div>
+                        <h3>The half-moon Earrings</h3>
+                    </div>
+                    <div><a href="#">FROM $320</a></div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div>
+            <img src="images/footer/footer_img_1.png" alt="footer_image1">
+        </div>
+
+        <div>
+            <nav aria-label="footer-navigation">
+                <ul>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">WEB MAP</a></li>
+                    <li><a href="#">IMAGE GALLERY</a></li>
+                    <li><a href="#">NEWS</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                </ul>
+            </nav>
+
+            <span>
+                Copyright &#169 2020 <a href="#">ekommart</a>. All Rights Reserved.
+            </span>
+        </div>
+
+        <div>
+            <img src="images/footer/footer_img_2.png" alt="footer_image2">
+        </div>
+    </footer>
+  </body>
+</html>
