@@ -83,7 +83,7 @@
       </div>
     </header>
 
-    <nav aria-label="header-navigation">
+    <nav>
         <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#" >Web Map</a></li>
@@ -94,44 +94,69 @@
     </nav>
 
     <main>
-        <section id="news">
-            <h2>News</h2>
-            <div>
-                <article class="first-elem" aria-label="news-article-1">
-                    <div>
-                        <div>LATEST TRENDS</div>
-                        <h3>SEASON'S Newest Arrivals</h3>
-                        <div><a href="#">SHOP NOW</a></div>
-                    </div>
-                </article>
-    
-                <article class="second-elem" aria-label="news-article-2">
-                    <div>
-                        <div>SUNWASHED PINK</div>
-                        <h3>REAL SIMPLE</h3>
-                    </div>
-                </article>
-    
-                <article class="third-elem" aria-label="news-article-3">
-                    <div>
-                        <div><strong>MIXES CROCHET</strong></div>
-                        <h3>Crochet bead bracelet</h3>
-                    </div>
-                </article>
-    
-                <article class="fourth-elem" aria-label="news-article-4">
-                    <div>
-                        <div class="thunder">
-                            <img src="images/thunder.png" alt="thunder">
-                            <span><strong>NEW</strong></span>
-                        </div>
-                        <h3>Fruit bowl earrings</h3>
-                        <div>Titanium post with disc clutch closures.</div>
-                        <div><a href="#">Shop Now</a></div>
-                    </div>
-                </article>
-            </div>
-        </section>
+      <section id="must">
+        <img src="images/crown.png" alt="crown">
+        <h2>Spring Must-Haves</h2>
+        <div>
+          <hr>
+          Picked for you
+          <hr>
+        </div>
+
+        <div class="flex">
+            <article aria-label="must-article-1">
+                <a href="#"><img src="images/must_img1.png" alt="Fleece Badge Of Sport Graphic Hoodie"></a>
+                <img src="images/rating.png" alt="rating" class="rating">
+                <div class="categories">
+                    <div class="new">New</div>
+                    <div class="sale">Sale</div>
+                </div>
+                <div class="subcategory">Running</div>
+                <a href="#">
+                    <h3>Fleece Badge Of Sport Graphic Hoodie</h3>
+                </a>
+                <div class="price">$40.00</div>
+            </article>
+
+            <article aria-label="must-article-2">
+                <a href="#"><img src="images/must_img2.png" alt="Men's Rugged Workwear Graphic Hoodie"></a>
+                <img src="images/rating.png" alt="rating" class="rating">
+                <div class="categories">
+                    <div class="new">New</div>
+                </div>
+                <div class="subcategory">Outwear</div>
+                <a href="#">
+                    <h3>Men's Rugged Workwear Graphic Hoodie</h3>
+                </a>
+                <div class="price">$59.99</div>
+            </article>
+
+            <article aria-label="must-article-3">
+                <a href="#"><img src="images/must_img3.png" alt="Men's Rain Defender Rockland Sherpa-Lined"></a>
+                <img src="images/rating.png" alt="rating" class="rating">
+                <div class="categories">
+                    <div class="sale">Sale</div>
+                </div>
+                <div class="subcategory">Sweatshirt</div>
+                <a href="#">
+                    <h3>Men's Rain Defender Rockland Sherpa-Lined</h3>
+                </a>
+                <div><span class="price">$40.00</span><span
+                        style="text-decoration: line-through; margin-left: 1em;">$350.99</span>
+                </div>
+            </article>
+
+            <article aria-label="must-article-4">
+                <a href="#"><img src="images/must_img4.png" alt="Men's Sportwear 2019 Hooded Windrunner Jacket"></a>
+                <img src="images/rating.png" alt="rating" class="rating">
+                <div class="subcategory">Running</div>
+                <a href="#">
+                    <h3>Men's Sportwear 2019 Hooded Windrunner Jacket</h3>
+                </a>
+                <div class="price">$40.00</div>
+            </article>
+        </div>
+    </section>
 
         <section id="popular">
             <div class="flex">
@@ -150,7 +175,7 @@
                     </div>
 
                     <div class="articles">
-                        <article aria-label="popular-article-1">
+                        <article>
                             <a href="#"><img src="images/popular_img1.png" alt="popular1"></a>
                             <img src="images/rating.png" alt="rating" class="rating">
                             <div class="subcategory">Running</div>
@@ -160,7 +185,7 @@
                             <div class="price">$40.00</div>
                         </article>
 
-                        <article aria-label="popular-article-2">
+                        <article>
                             <a href="#"><img src="images/popular_img2.png" alt="popular2"></a>
                             <img src="images/rating.png" alt="rating" class="rating">
                             <div class="subcategory">Outwear</div>
@@ -170,7 +195,7 @@
                             <div class="price">$59.99</div>
                         </article>
 
-                        <article aria-label="popular-article-3">
+                        <article>
                             <a href="#"><img src="images/popular_img3.png" alt="popular3"></a>
                             <img src="images/rating.png" alt="rating" class="rating">
                             <div class="subcategory">Sweatshirt</div>
@@ -183,7 +208,7 @@
                     </div>
                 </div>
 
-                <article class="last-article" aria-label="popular-article-4">
+                <article class="last-article">
                     <img src="images/popular_img4.png" alt="popular4">
                     <div>
                         <div>Accessory pick</div>
@@ -201,7 +226,7 @@
         </div>
 
         <div>
-            <nav aria-label="footer-navigation">
+            <nav>
                 <ul>
                     <li><a href="#">HOME</a></li>
                     <li><a href="#">WEB MAP</a></li>
