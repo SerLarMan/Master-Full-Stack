@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <script src='https://kit.fontawesome.com/1bbcd94d9b.js' crossorigin='anonymous'></script>
+    <script
+      src="https://kit.fontawesome.com/1bbcd94d9b.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Landing Page Flex</title>
   </head>
 
@@ -15,8 +18,8 @@
           <div class="language-select">
             <label for="language">Language</label>
             <select name="language" id="language">
-              <option value="Español">Español</option>
-              <option value="English" selected>English</option>
+              <option value="Espanyol">Español</option>
+              <option value="Ingles" selected>English</option>
             </select>
           </div>
 
@@ -24,7 +27,7 @@
             <label for="currency">Currency</label>
             <select name="currency" id="currency">
               <option value="Euro">Euro</option>
-              <option value="Dollar" selected>Dollar</option>
+              <option value="Dolar" selected>Dollar</option>
             </select>
           </div>
 
@@ -84,166 +87,195 @@
     </header>
 
     <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#" >Web Map</a></li>
-            <li><a href="#" >Image Gallery</a></li>
-            <li><a href="#" >News</a></li>
-            <li><a href="#" >Contact</a></li>
-        </ul>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Web Map</a></li>
+        <li><a href="#">Image Gallery</a></li>
+        <li><a href="#">News</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
     </nav>
 
     <main>
       <section id="must">
-        <img src="images/crown.png" alt="crown">
+        <img src="images/crown.png" alt="crown" />
         <h2>Spring Must-Haves</h2>
         <div>
-          <hr>
+          <hr />
           Picked for you
-          <hr>
+          <hr />
         </div>
 
         <div class="flex">
-            <article aria-label="must-article-1">
-                <a href="#"><img src="images/must_img1.png" alt="Fleece Badge Of Sport Graphic Hoodie"></a>
-                <img src="images/rating.png" alt="rating" class="rating">
-                <div class="categories">
-                    <div class="new">New</div>
-                    <div class="sale">Sale</div>
-                </div>
+          <article aria-label="must-article-1">
+            <a href="#"
+              ><img
+                src="images/must_img1.png"
+                alt="Fleece Badge Of Sport Graphic Hoodie"
+            /></a>
+            <img src="images/rating.png" alt="rating" class="rating" />
+            <div class="categories">
+              <div class="new">New</div>
+              <div class="sale">Sale</div>
+            </div>
+            <div class="subcategory">Running</div>
+            <a href="#">
+              <h3>Fleece Badge Of Sport Graphic Hoodie</h3>
+            </a>
+            <div class="price">$40.00</div>
+          </article>
+
+          <article aria-label="must-article-2">
+            <a href="#"
+              ><img
+                src="images/must_img2.png"
+                alt="Men's Rugged Workwear Graphic Hoodie"
+            /></a>
+            <img src="images/rating.png" alt="rating" class="rating" />
+            <div class="categories">
+              <div class="new">New</div>
+            </div>
+            <div class="subcategory">Outwear</div>
+            <a href="#">
+              <h3>Men's Rugged Workwear Graphic Hoodie</h3>
+            </a>
+            <div class="price">$59.99</div>
+          </article>
+
+          <article aria-label="must-article-3">
+            <a href="#"
+              ><img
+                src="images/must_img3.png"
+                alt="Men's Rain Defender Rockland Sherpa-Lined"
+            /></a>
+            <img src="images/rating.png" alt="rating" class="rating" />
+            <div class="categories">
+              <div class="sale">Sale</div>
+            </div>
+            <div class="subcategory">Sweatshirt</div>
+            <a href="#">
+              <h3>Men's Rain Defender Rockland Sherpa-Lined</h3>
+            </a>
+            <div>
+              <span class="price">$40.00</span
+              ><span style="text-decoration: line-through; margin-left: 1em"
+                >$350.99</span
+              >
+            </div>
+          </article>
+
+          <article aria-label="must-article-4">
+            <a href="#"
+              ><img
+                src="images/must_img4.png"
+                alt="Men's Sportwear 2019 Hooded Windrunner Jacket"
+            /></a>
+            <img src="images/rating.png" alt="rating" class="rating" />
+            <div class="subcategory">Running</div>
+            <a href="#">
+              <h3>Men's Sportwear 2019 Hooded Windrunner Jacket</h3>
+            </a>
+            <div class="price">$40.00</div>
+          </article>
+        </div>
+      </section>
+
+      <section id="popular">
+        <div class="flex">
+          <div>
+            <div class="title">
+              <h2>The most popular items</h2>
+              <ul>
+                <li><a href="#">Footwear</a></li>
+                <span>·</span>
+                <li><a href="#">Appael</a></li>
+                <span>·</span>
+                <li><a href="#">Outdoor</a></li>
+                <span>·</span>
+                <li><a href="#">Accessories</a></li>
+              </ul>
+            </div>
+
+            <div class="articles">
+              <article>
+                <a href="#"
+                  ><img src="images/popular_img1.png" alt="popular1"
+                /></a>
+                <img src="images/rating.png" alt="rating" class="rating" />
                 <div class="subcategory">Running</div>
                 <a href="#">
-                    <h3>Fleece Badge Of Sport Graphic Hoodie</h3>
+                  <h3>Fleece Badge Of Sport Graphic Hoodie</h3>
                 </a>
                 <div class="price">$40.00</div>
-            </article>
+              </article>
 
-            <article aria-label="must-article-2">
-                <a href="#"><img src="images/must_img2.png" alt="Men's Rugged Workwear Graphic Hoodie"></a>
-                <img src="images/rating.png" alt="rating" class="rating">
-                <div class="categories">
-                    <div class="new">New</div>
-                </div>
+              <article>
+                <a href="#"
+                  ><img src="images/popular_img2.png" alt="popular2"
+                /></a>
+                <img src="images/rating.png" alt="rating" class="rating" />
                 <div class="subcategory">Outwear</div>
                 <a href="#">
-                    <h3>Men's Rugged Workwear Graphic Hoodie</h3>
+                  <h3>Men's Rugged Workwear Graphic Hoodie</h3>
                 </a>
                 <div class="price">$59.99</div>
-            </article>
+              </article>
 
-            <article aria-label="must-article-3">
-                <a href="#"><img src="images/must_img3.png" alt="Men's Rain Defender Rockland Sherpa-Lined"></a>
-                <img src="images/rating.png" alt="rating" class="rating">
-                <div class="categories">
-                    <div class="sale">Sale</div>
-                </div>
+              <article>
+                <a href="#"
+                  ><img src="images/popular_img3.png" alt="popular3"
+                /></a>
+                <img src="images/rating.png" alt="rating" class="rating" />
                 <div class="subcategory">Sweatshirt</div>
                 <a href="#">
-                    <h3>Men's Rain Defender Rockland Sherpa-Lined</h3>
+                  <h3>Men's Rain Defender Rockland Sherpa-Lined</h3>
                 </a>
-                <div><span class="price">$40.00</span><span
-                        style="text-decoration: line-through; margin-left: 1em;">$350.99</span>
-                </div>
-            </article>
-
-            <article aria-label="must-article-4">
-                <a href="#"><img src="images/must_img4.png" alt="Men's Sportwear 2019 Hooded Windrunner Jacket"></a>
-                <img src="images/rating.png" alt="rating" class="rating">
-                <div class="subcategory">Running</div>
-                <a href="#">
-                    <h3>Men's Sportwear 2019 Hooded Windrunner Jacket</h3>
-                </a>
-                <div class="price">$40.00</div>
-            </article>
-        </div>
-    </section>
-
-        <section id="popular">
-            <div class="flex">
                 <div>
-                    <div class="title">
-                        <h2>The most popular items</h2>
-                        <ul>
-                            <li><a href="#">Footwear</a></li>
-                            <span>·</span>
-                            <li><a href="#">Appael</a></li>
-                            <span>·</span>
-                            <li><a href="#">Outdoor</a></li>
-                            <span>·</span>
-                            <li><a href="#">Accessories</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="articles">
-                        <article>
-                            <a href="#"><img src="images/popular_img1.png" alt="popular1"></a>
-                            <img src="images/rating.png" alt="rating" class="rating">
-                            <div class="subcategory">Running</div>
-                            <a href="#">
-                                <h3>Fleece Badge Of Sport Graphic Hoodie</h3>
-                            </a>
-                            <div class="price">$40.00</div>
-                        </article>
-
-                        <article>
-                            <a href="#"><img src="images/popular_img2.png" alt="popular2"></a>
-                            <img src="images/rating.png" alt="rating" class="rating">
-                            <div class="subcategory">Outwear</div>
-                            <a href="#">
-                                <h3>Men's Rugged Workwear Graphic Hoodie</h3>
-                            </a>
-                            <div class="price">$59.99</div>
-                        </article>
-
-                        <article>
-                            <a href="#"><img src="images/popular_img3.png" alt="popular3"></a>
-                            <img src="images/rating.png" alt="rating" class="rating">
-                            <div class="subcategory">Sweatshirt</div>
-                            <a href="#">
-                                <h3>Men's Rain Defender Rockland Sherpa-Lined</h3>
-                            </a>
-                            <div><span class="price">$40.00</span><span
-                                    style="text-decoration: line-through; margin-left: 1em;">$350.99</span></div>
-                        </article>
-                    </div>
+                  <span class="price">$40.00</span
+                  ><span style="text-decoration: line-through; margin-left: 1em"
+                    >$350.99</span
+                  >
                 </div>
-
-                <article class="last-article">
-                    <img src="images/popular_img4.png" alt="popular4">
-                    <div>
-                        <div>Accessory pick</div>
-                        <h3>The half-moon Earrings</h3>
-                    </div>
-                    <div><a href="#">FROM $320</a></div>
-                </article>
+              </article>
             </div>
-        </section>
+          </div>
+
+          <article class="last-article">
+            <img src="images/popular_img4.png" alt="popular4" />
+            <div>
+              <div>Accessory pick</div>
+              <h3>The half-moon Earrings</h3>
+            </div>
+            <div><a href="#">FROM $320</a></div>
+          </article>
+        </div>
+      </section>
     </main>
 
     <footer>
-        <div>
-            <img src="images/footer/footer_img_1.png" alt="footer_image1">
-        </div>
+      <div>
+        <img src="images/footer/footer_img_1.png" alt="footer_image1" />
+      </div>
 
-        <div>
-            <nav>
-                <ul>
-                    <li><a href="#">HOME</a></li>
-                    <li><a href="#">WEB MAP</a></li>
-                    <li><a href="#">IMAGE GALLERY</a></li>
-                    <li><a href="#">NEWS</a></li>
-                    <li><a href="#">CONTACT</a></li>
-                </ul>
-            </nav>
+      <div>
+        <nav>
+          <ul>
+            <li><a href="#">HOME</a></li>
+            <li><a href="#">WEB MAP</a></li>
+            <li><a href="#">IMAGE GALLERY</a></li>
+            <li><a href="#">NEWS</a></li>
+            <li><a href="#">CONTACT</a></li>
+          </ul>
+        </nav>
 
-            <span>
-                Copyright &#169 2020 <a href="#">ekommart</a>. All Rights Reserved.
-            </span>
-        </div>
+        <span>
+          Copyright &#169 2020 <a href="#">ekommart</a>. All Rights Reserved.
+        </span>
+      </div>
 
-        <div>
-            <img src="images/footer/footer_img_2.png" alt="footer_image2">
-        </div>
+      <div>
+        <img src="images/footer/footer_img_2.png" alt="footer_image2" />
+      </div>
     </footer>
   </body>
 </html>

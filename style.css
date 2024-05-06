@@ -178,7 +178,7 @@ nav a:hover {
   align-items: center;
 }
 
-#must>div:first-of-type {
+#must > div:first-of-type {
   margin-bottom: 3em;
   display: flex;
   justify-content: space-evenly;
@@ -188,15 +188,6 @@ nav a:hover {
 #must hr {
   width: 35%;
 }
-
-/* #must>div:first-of-type::before,
-#must>div:first-of-type::after {
-  display: inline-block;
-  content: "";
-  border-top: 1px solid var(--aux-color);
-  width: 565px;
-  margin: 0 1.6em 0.2em 1.6em;
-} */
 
 #must .categories {
   position: absolute;
@@ -225,93 +216,93 @@ nav a:hover {
 
 #must .categories .sale {
   color: white;
-  background-color: #B30000;
+  background-color: #b30000;
 }
 
 #popular {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #popular .flex .title {
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1em 0 1em;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1em 0 1em;
 }
 
 #popular ul {
-    display: flex;
-    justify-self: flex-end;
+  display: flex;
+  justify-self: flex-end;
 }
 
 #popular ul li {
-    list-style: none;
+  list-style: none;
 }
 
 #popular ul span {
-    margin: 0 0.3em 0 0.3em;
-    font-weight: bold;
+  margin: 0 0.3em 0 0.3em;
+  font-weight: bold;
 }
 
 #popular ul li a:hover {
-    color: var(--primary-color);
+  color: var(--primary-color);
 }
 
 #popular .flex .title,
 #popular .flex .articles {
-    display: flex;
+  display: flex;
 }
 
-#popular .flex>div:first-of-type {
-    border-bottom: 1px solid var(--aux-color);
+#popular .flex > div:first-of-type {
+  border-bottom: 1px solid var(--aux-color);
 }
 
 .last-article {
-    position: relative;
-    color: white;
+  position: relative;
+  color: white;
 }
 
-.last-article>div:first-of-type {
-    width: 200px;
+.last-article > div:first-of-type {
+  width: 200px;
 
-    position: absolute;
-    top: 70%;
+  position: absolute;
+  top: 70%;
 }
 
-.last-article>div:first-of-type h3 {
-    font-size: 1.5em;
+.last-article > div:first-of-type h3 {
+  font-size: 1.5em;
 }
 
-.last-article>div:last-of-type {
-    width: 300px;
-    height: 35px;
-    background-color: var(--secondary-color);
-    text-align: center;
-    padding-top: 5%;
+.last-article > div:last-of-type {
+  width: 300px;
+  height: 35px;
+  background-color: var(--secondary-color);
+  text-align: center;
+  padding-top: 5%;
 }
 
-.last-article>div:last-of-type a {
-    color: white;
+.last-article > div:last-of-type a {
+  color: white;
 }
 
 .flex {
-    display: flex;
+  display: flex;
 }
 
 .flex article {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 330px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 330px;
 
-    text-align: center;
+  text-align: center;
 
-    position: relative;
+  position: relative;
 }
 
 .flex article h3 {
-    margin-top: 0.6em;
+  margin-top: 0.6em;
 }
 
 /*
@@ -366,6 +357,30 @@ footer nav li a {
     justify-content: space-between;
   }
 
+  #must .flex,
+  #popular .flex {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  #must .flex article {
+    max-width: calc(50% - 1em);
+    margin-bottom: 2em;
+  }
+  #popular .flex {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #popular .flex article {
+    max-width: 100%;
+    margin-bottom: 2em;
+  }
+
+  #popular .flex > div:first-of-type {
+    border-bottom: none;
+  }
+
   footer div:nth-child(2) {
     width: 100%;
   }
@@ -373,5 +388,50 @@ footer nav li a {
   footer div:first-of-type,
   footer div:last-of-type {
     display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  #header-main-title .phone{
+    display: none
+  }
+
+  #header-main-title {
+    justify-content: space-between;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+  #popular .flex .title {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  #popular ul {
+    padding-left: 0px;
+  }
+
+  #must .flex,
+  #popular .flex {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #must .flex article,
+  #popular .flex article {
+    max-width: 100%;
+    margin-bottom: 2em;
+  }
+
+  #popular .flex .articles,
+  #popular .last-article {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #popular .flex .articles article,
+  #popular .last-article {
+    max-width: 100%;
+    margin-bottom: 2em;
   }
 }
