@@ -8,7 +8,69 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Resto del CSS */
+body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: var(--spacing);
+  min-height: 1000px;
+  max-width: 75%;
+  padding: 1em;
+}
+
+header {
+  grid-area: 1 / 1 / span 2 / span 1;
+  background-color: var(--blue-color);
+  color: var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+header h1,
+footer button,
+main {
+  text-transform: uppercase;
+}
+
+header p {
+  margin: 0 3em 0 3em;
+}
+
+.school,
+.student,
+main,
+.time,
+.alumni {
+  grid-area: auto;
+}
+
+main {
+  color: var(--blue-color);
+  border: var(--border);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main h2 {
+  margin: 0 2em 0 2em;
+  text-align: center;
+}
+
+footer {
+  grid-area: 3 / 2 / span 1 / span 2;
+  background-color: var(--orange-color);
+  color: var(--primary-color);
+  padding: 1.5em;
+}
+
+footer button {
+  width: 200px;
+  height: 70px;
+  border: none;
+}
 
 .school {
   background-image: url(https://images03.nicepage.com/c461c07a441a5d220e8feb1a/d8ce469044b958508f4bdbab/blueschoolbackpackwithessentialsupplies_232148207678.jpg);
