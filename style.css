@@ -1,0 +1,137 @@
+@font-face {
+  font-family: "Helvetica Now Text Medium";
+  src: url("./resources/fonts/HelveticaNowText-Medium.ttf");
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Now Text Medium";
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: black;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+nav div:last-of-type {
+  align-items: center;
+}
+
+nav div:last-of-type a {
+  margin-left: 2em;
+}
+
+nav div:last-of-type a i {
+  font-size: 1rem;
+}
+
+.hide {
+  display: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  max-width: 100%;
+}
+
+.displayedUl {
+  display: flex;
+}
+
+.displayedUl li {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+.searchInput {
+  display: flex;
+  border-radius: 25px;
+  height: 35px;
+  width: 150px;
+  background-color: lightgray;
+}
+
+.searchInput a {
+  justify-self: flex-start;
+}
+
+.searchInput input {
+  border: none;
+  background-color: lightgray;
+  height: 35px;
+  width: 100px;
+}
+
+.searchInput input:focus {
+  outline: none;
+}
+
+.headerTopPart {
+  display: flex;
+  justify-content: space-between;
+}
+
+.headerAd {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: lightgray;
+}
+
+.flex {
+  display: flex;
+}
+
+.roundButton {
+  width: 30px;
+  height: 30px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+.roundButton:hover {
+  background-color: lightgray;
+}
+
+.chip {
+  width: 100px;
+  height: 40px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: green;
+}
+
+.chip:hover {
+  background-color: lightgray;
+}
+
+.jumbo {
+  background-image: url("https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_1903,c_limit/8e2678cc-7e77-4467-8f45-574b39af1e49/nike-just-do-it.jpg");
+  color: white;
+}
