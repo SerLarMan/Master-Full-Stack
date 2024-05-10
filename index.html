@@ -25,14 +25,14 @@
       <div class="headerTopPart">
         <div>
           <a href="">
-            <svg height="24px" width="24px" fill="#111" viewBox="0 0 26 32">
+            <svg viewBox="0 0 26 32">
               <path
                 d="M14.4 5.52v-.08q0-.56.36-1t.92-.44 1 .36.48.96-.36 1-.96.4l-.24.08.08.12-.08.44-.16 1.28q.08.08.08.16l-.16.8q-.08.16-.16.24l-.08.32q-.16.64-.28 1.04t-.2.64V12q-.08.4-.12.64t-.28.8q-.16.32 0 1.04l.08.08q0 .24.2.56t.2.56q.08 1.6-.24 2.72l.16.48q.96.48.56 1.04l.4.16q.96.48 1.36.84t.8.76q.32.08.48.24l.24.08q1.68 1.12 3.36 2.72l.32.24v.08l-.08.16.24.16h.08q.24.16.32.16h.08q.08 0 .16-.08l.16-.08q.16-.16.32-.24h.32q.08 0 0 .08l-.32.16-.4.48h.56l.56.08q.24-.08.4-.16l.4-.24q.24-.08.48.16h.08q.08.08-.08.24l-.96.88q-.4.32-.72.4l-1.04.72q-.08.08-.16 0l-.24-.32-.16-.32-.2-.28-.24-.32-.2-.24-.16-.2-.32-.24q-.16 0-.32-.08l-1.04-.8q-.24 0-.56-.24-1.2-1.04-1.6-1.28l-.48-.32-.96-.16q-.48-.08-1.28-.48l-.64-.32q-.64-.32-.88-.32l-.32-.16q-.32-.08-.48-.16l-.16-.16q-.16 0-.32.08l-1.6.8-2 .88q-.8.64-1.52 1.04l-.88.4-1.36.96q-.16.16-.32 0l-.16.16q-.24.08-.32.08l-.32.16v.16h-.16l-.16.24q-.16.32-.32.36t-.2.12-.08.12l-.16.16-.24.16-.36-.04-.48.08-.32.08q-.4.08-.64-.12t-.4-.6q-.16-.24.16-.4l.08-.08q.08-.08.24-.08h.48L1.6 26l.32-.08q0-.16.08-.24.08-.08.24-.08v-.08q-.08-.16-.08-.32-.08-.16-.04-.24t.08-.08h.04l.08.24q.08.4.24.24l.08-.16q.08-.16.24-.16l.16.16.16-.16-.08-.08q0-.08.08-.08l.32-.32q.4-.48.96-.88 1.12-.88 2.4-1.36.4-.4.88-.4.32-.56.96-1.2.56-.4.8-.56.16-.32.4-.32H10l.16-.16q.16-.08.24-.16v-.4q0-.4.08-.64t.4-.24l.32-.32q-.16-.32-.16-.72h-.08q-.16-.24-.16-.48-.24-.4-.32-.64h-.24q-.08.24-.4.32l-.08.16q-.32.56-.56.84t-.88.68q-.4.4-.56.88-.08.24 0 .48l-.08.16h.08q0 .16.08.16h.08q.16.08.16.2t-.24.08-.36-.16-.2-.12l-.24.24q-.16.24-.32.2t-.08-.12l.08-.08q.08-.16 0-.16l-.64.16q-.08.08-.2 0t.04-.16l.4-.16q0-.08-.08-.08-.32.16-.64.08l-.4-.08-.08-.08q0-.08.08-.08.32.08.8-.08l.56-.24.64-.72.08-.16q.32-.64.68-1.16t.76-.84l.08-.32q.16-.32.32-.56t.4-.64l.24-.32q.32-.48.72-.48l.24-.24q.08-.08.08-.24l.16-.16-.08-.08q-.48-.4-.48-.72-.08-.56.36-.96t.88-.36.68.28l.16.16q.08 0 .08.08l.32.16v.24q.16.16.16.24.16-.24.48-.56l.4-1.28q0-.32.16-.64l.16-.24v-.16l.24-.96h.16l.24-.96q.08-.24 0-.56l-.32-.8z"
               ></path>
             </svg>
           </a>
           <a href="">
-            <svg height="24px" width="24px" fill="#111" viewBox="0 0 39 33">
+            <svg viewBox="0 0 39 33">
               <path
                 d="M10.94 25.626l-4.236-5.501L.201 22.28l3.734-5.756L.11 10.777l6.59 2.031 4.026-5.474.14 6.785 6.64 2.175-6.594 2.446.028 6.886zm.824 7.239l13.952-16.393L11.806.107h11.697l14.871 16.389-14.8 16.369h-11.81z"
               ></path>
@@ -56,7 +56,7 @@
         </ul>
       </div>
 
-      <nav class="flex">
+      <nav>
         <a href="">
           <svg
             aria-hidden="true"
@@ -95,11 +95,11 @@
 
         <div class="flex">
           <div class="searchInput">
-            <a href="">
-              <div class="roundButton">
+            <div class="roundButton">
+              <a href="">
                 <i class="fa fa-magnifying-glass"></i>
-              </div>
-            </a>
+              </a>
+            </div>
             <form action="">
               <input type="text" placeholder="Buscar" />
             </form>
@@ -130,15 +130,23 @@
 
     <main>
       <section class="jumbo">
-        <p>Nike Style By</p>
-        <h2>NIKE CORTEZ</h2>
-        <p>El inconfundible icono vuelve con nuevos colores y materiales.</p>
         <a href="">
-          <div class="chip">Comprar</div>
+          <img
+            src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_1903,c_limit/8e2678cc-7e77-4467-8f45-574b39af1e49/nike-just-do-it.jpg"
+            alt=""
+          />
+          <div class="jumboText">
+            <p>Nike Style By</p>
+            <h2 class="jumboTitle">NIKE CORTEZ</h2>
+            <p>
+              El inconfundible icono vuelve con nuevos colores y materiales.
+            </p>
+            <div class="chip">Comprar</div>
+          </div>
         </a>
       </section>
 
-      <section>
+      <section class="nuevo">
         <h2>Lo mejor y más nuevo</h2>
         <div class="grid">
           <article>
@@ -181,7 +189,7 @@
                 src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_593,c_limit/800b58e3-b669-4dc3-a2d4-e68f5688d151/nike-just-do-it.jpg"
                 alt=""
               />
-              <div class="chip">Air Max</div>
+              <div class="chip movedChip">Air Max</div>
             </a>
           </article>
           <article>
@@ -191,7 +199,7 @@
                 src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_593,c_limit/c61c8b70-ef28-4615-9b81-76c17467681c/nike-just-do-it.jpg"
                 alt=""
               />
-              <div class="chip">Air Force 1</div>
+              <div class="chip movedChip">Air Force 1</div>
             </a>
           </article>
           <article>
@@ -201,7 +209,7 @@
                 src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_593,c_limit/64b7ce43-fe36-4a02-ae10-b8251a33d847/nike-just-do-it.jpg"
                 alt=""
               />
-              <div class="chip">Dunk</div>
+              <div class="chip movedChip">Dunk</div>
             </a>
           </article>
         </div>
@@ -217,7 +225,7 @@
                 src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_593,c_limit/a3c971bc-bc0a-4c0c-8bdf-e807a3027e53/nike-just-do-it.jpg"
                 alt=""
               />
-              <div class="chip">Running</div>
+              <div class="chip movedChip">Running</div>
             </a>
           </article>
           <article>
@@ -227,7 +235,7 @@
                 src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_593,c_limit/e4695209-3f23-4a05-a9f9-d0edde31b653/nike-just-do-it.jpg"
                 alt=""
               />
-              <div class="chip">Fútbol</div>
+              <div class="chip movedChip">Fútbol</div>
             </a>
           </article>
           <article>
@@ -237,13 +245,13 @@
                 src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_593,c_limit/38ed4b8e-9cfc-4e66-9ddd-02a52314eed9/nike-just-do-it.jpg"
                 alt=""
               />
-              <div class="chip">Baloncesto</div>
+              <div class="chip movedChip">Baloncesto</div>
             </a>
           </article>
         </div>
       </section>
 
-      <section>
+      <section class="tendencias">
         <h2>Tendencias de la semana</h2>
         <div class="grid">
           <article>
@@ -298,7 +306,7 @@
                 src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_626,c_limit/fb5a9aac-a115-4f55-ae75-9bb04ce64aa4/nike-just-do-it.png"
                 alt=""
               />
-              <div class="chip">Mujer</div>
+              <div class="chip movedChip">Mujer</div>
             </a>
           </article>
           <article>
@@ -308,7 +316,7 @@
                 src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_626,c_limit/0f99a8f5-c34c-4e3d-b646-e424cfe3bd6d/nike-just-do-it.png"
                 alt=""
               />
-              <div class="chip">Hombre</div>
+              <div class="chip movedChip">Hombre</div>
             </a>
           </article>
           <article>
@@ -318,7 +326,7 @@
                 src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_626,c_limit/bc15663f-b8a7-48fa-a06c-e8c55236ebdf/nike-just-do-it.png"
                 alt=""
               />
-              <div class="flex">
+              <div class="flex movedChip">
                 <div class="chip">Niño/a</div>
                 <div class="chip">Adolescente</div>
               </div>
@@ -330,124 +338,134 @@
 
     <footer>
       <div>
-        <div>
+        <div class="footerListas">
           <ul>
             <a href="">
-              <li>TARJETAS DE REGALO</li>
+              <li class="ulCaption">TARJETAS DE REGALO</li>
             </a>
             <a href="">
-              <li>BUSCAR UNA TIENDA</li>
+              <li class="ulCaption">BUSCAR UNA TIENDA</li>
             </a>
             <a href="">
-              <li>NIKE JOURNAL</li>
+              <li class="ulCaption">NIKE JOURNAL</li>
             </a>
             <a href="">
-              <li>HAZTE MEMBER</li>
+              <li class="ulCaption">HAZTE MEMBER</li>
             </a>
             <a href="">
-              <li>DESCUENTO PARA ESTUDIANTES</li>
+              <li class="ulCaption">DESCUENTO PARA ESTUDIANTES</li>
             </a>
             <a href="">
-              <li>COMENTARIOS</li>
+              <li class="ulCaption">COMENTARIOS</li>
             </a>
             <a href="">
-              <li>CÓDIGOS PROMOCIONALES</li>
+              <li class="ulCaption">CÓDIGOS PROMOCIONALES</li>
             </a>
           </ul>
 
           <ul>
             <a href="">
-              <li>AYUDA</li>
+              <li class="ulCaption">AYUDA</li>
             </a>
             <a href="">
-              <li>Obtener ayuda</li>
+              <li class="ulItem">Obtener ayuda</li>
             </a>
             <a href="">
-              <li>Estado del pedido</li>
+              <li class="ulItem">Estado del pedido</li>
             </a>
             <a href="">
-              <li>Envíos y entregas</li>
+              <li class="ulItem">Envíos y entregas</li>
             </a>
             <a href="">
-              <li>Devoluciones</li>
+              <li class="ulItem">Devoluciones</li>
             </a>
             <a href="">
-              <li>Opciones de pago</li>
+              <li class="ulItem">Opciones de pago</li>
             </a>
             <a href="">
-              <li>Contacto</li>
+              <li class="ulItem">Contacto</li>
             </a>
             <a href="">
-              <li>Evaluaciones</li>
+              <li class="ulItem">Evaluaciones</li>
             </a>
             <a href="">
-              <li>Ayuda con los códigos promocionales de Nike</li>
+              <li class="ulItem">
+                Ayuda con los códigos promocionales de Nike
+              </li>
             </a>
           </ul>
 
           <ul>
             <a href="">
-              <li>EMPRESA</li>
+              <li class="ulCaption">EMPRESA</li>
             </a>
             <a href="">
-              <li>Acerca de Nike</li>
+              <li class="ulItem">Acerca de Nike</li>
             </a>
             <a href="">
-              <li>Novedades</li>
+              <li class="ulItem">Novedades</li>
             </a>
             <a href="">
-              <li>Empleo</li>
+              <li class="ulItem">Empleo</li>
             </a>
             <a href="">
-              <li>Inversores</li>
+              <li class="ulItem">Inversores</li>
             </a>
             <a href="">
-              <li>Sostenibilidad</li>
+              <li class="ulItem">Sostenibilidad</li>
             </a>
             <a href="">
-              <li>Proposito</li>
+              <li class="ulItem">Proposito</li>
             </a>
           </ul>
         </div>
 
-        <div>
-          <div>
-            <a href=""><i></i></a>
-          </div>
-          <div>
-            <a href=""><i></i></a>
-          </div>
-          <div>
-            <a href=""><i></i></a>
-          </div>
-          <div>
-            <a href=""><i></i></a>
-          </div>
+        <div class="redes">
+          <a href="">
+            <div class="roundButton">
+              <i class="fa fa-twitter"></i>
+            </div>
+          </a>
+          <a href="">
+            <div class="roundButton">
+              <i class="fa fa-facebook-f"></i>
+            </div>
+          </a>
+          <a href="">
+            <div class="roundButton">
+              <i class="fa fa-youtube"></i>
+            </div>
+          </a>
+          <a href="">
+            <div class="roundButton">
+              <i class="fa fa-instagram"></i>
+            </div>
+          </a>
         </div>
       </div>
 
       <div>
-        <div>
-          <a href=""><i></i> Spain</a>
+        <div class="datos">
+          <a href=""><i class="fa fa-location-dot"></i> Spain</a>
           <span>2024 Nike, Inc. Todos los derechos reservados</span>
         </div>
 
         <div>
-          <ul>
+          <ul class="displayedUl">
             <a href="">
-              <li>Guías</li>
+              <li class="ulItem">Guías</li>
             </a>
             <a href="">
-              <li>Términos de uso</li>
+              <li class="ulItem">Términos de uso</li>
             </a>
             <a href="">
-              <li>Términos de venta</li>
+              <li class="ulItem">Términos de venta</li>
             </a>
             <a href="">
-              <li>Aviso Legal</li>
+              <li class="ulItem">Aviso Legal</li>
             </a>
             <a href="">
-              <li>Política de privacidad y cookies</li>
+              <li class="ulItem">Política de privacidad y cookies</li>
             </a>
           </ul>
         </div>

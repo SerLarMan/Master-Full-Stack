@@ -1,25 +1,45 @@
+/* PROYECT CONFIGURATION */
+
 @font-face {
   font-family: "Helvetica Now Text Medium";
   src: url("./resources/fonts/HelveticaNowText-Medium.ttf");
 }
 
+@font-face {
+  font-family: "Trade Gothic";
+  src: url("./resources/fonts/");
+}
+
+:root {
+  --primary-font: "Helvetica Now Text Medium";
+  --secondary-font: "Trade Gothic";
+  --font-size-large: 24px;
+  --font-size-medium1: 16px;
+  --font-size-medium2: 14px;
+  --font-size-small: 12px;
+  --primary-color: #111111;
+  --secondary-color: #f5f5f5;
+  --accent-color: #7e7e7e;
+}
+
+/* GLOBAL STYLES */
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-}
-
-body {
-  font-family: "Helvetica Now Text Medium";
+  font-family: var(--primary-font);
+  font-size: var(--font-size-medium);
+  color: var(--primary-color);
 }
 
 a {
   text-decoration: none;
-  color: black;
+  color: var(--primary-color);
 }
 
 a:hover {
-  color: black;
+  color: var(--primary-color);
 }
 
 ul {
@@ -29,8 +49,18 @@ ul {
 }
 
 nav {
-  justify-content: space-evenly;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 3em;
+}
+
+nav ul li {
+  border-bottom: 2px solid transparent;
+}
+
+nav ul li:hover {
+  border-bottom: 2px solid var(--primary-color);
 }
 
 nav div:last-of-type {
@@ -45,15 +75,33 @@ nav div:last-of-type a i {
   font-size: 1rem;
 }
 
-.hide {
-  display: none;
+section h2:not(.jumboTitle) {
+  font-size: var(--font-size-large);
+  margin-bottom: 1.5em;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto;
-  max-width: 100%;
+section:not(.jumbo) {
+  padding: 3em 3em 0 3em;
+}
+
+footer {
+  background-color: var(--primary-color);
+  padding: 3em 3em 0 3em;
+  display: flex;
+  flex-direction: column;
+}
+
+footer > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex {
+  display: flex;
+}
+
+.hide {
+  display: none;
 }
 
 .displayedUl {
@@ -65,32 +113,44 @@ nav div:last-of-type a i {
   margin-right: 0.5em;
 }
 
-.searchInput {
+.roundButton {
+  width: 30px;
+  height: 30px;
+  border-radius: 100px;
   display: flex;
-  border-radius: 25px;
-  height: 35px;
-  width: 150px;
-  background-color: lightgray;
+  justify-content: center;
+  align-items: center;
 }
 
-.searchInput a {
-  justify-self: flex-start;
+.roundButton:hover {
+  background-color: var(--secondary-color);
 }
 
-.searchInput input {
-  border: none;
-  background-color: lightgray;
-  height: 35px;
-  width: 100px;
-}
-
-.searchInput input:focus {
-  outline: none;
-}
+/* HEADER STYLES */
 
 .headerTopPart {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  background-color: var(--secondary-color);
+  height: 2em;
+  padding: 0 3em;
+}
+
+.headerTopPart li {
+  font-size: var(--font-size-small);
+  border-right: 1px solid var(--primary-color);
+  padding-right: 1em;
+}
+
+.headerTopPart li:hover {
+  color: var(--accent-color);
+}
+
+.headerTopPart svg {
+  width: 24px;
+  height: 24px;
+  padding: 0 16px;
 }
 
 .headerAd {
@@ -98,40 +158,208 @@ nav div:last-of-type a i {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: lightgray;
+  padding: 0.5em 0;
+  margin-bottom: 1em;
+  background-color: var(--secondary-color);
 }
 
-.flex {
+.headerAd p {
+  margin-bottom: 0;
+}
+
+.headerAd p:last-of-type {
+  font-size: var(--font-size-small);
+}
+
+.headerAd p:last-of-type a {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.searchInput {
   display: flex;
+  justify-content: left;
+  align-items: center;
+  border-radius: 100px;
+  height: 35px;
+  width: fit-content;
+  background-color: var(--secondary-color);
+  position: relative;
 }
 
-.roundButton {
-  width: 30px;
-  height: 30px;
-  border-radius: 25px;
+.searchInput a {
+  position: absolute;
+  left: 0;
+}
+
+.searchInput a div:hover {
+  background-color: #e5e5e5;
+}
+
+.searchInput input {
+  border: none;
+  border-radius: 100px;
+  background-color: var(--secondary-color);
+  height: 35px;
+  width: 100px;
+  padding-left: 2em;
+}
+
+.searchInput input:hover {
+  background-color: #e5e5e5;
+}
+
+.searchInput input:focus {
+  outline: none;
+}
+
+/* BODY STYLES */
+
+.jumbo {
+  position: relative;
+}
+
+.jumboText {
+  position: absolute;
+  bottom: 3em;
+  left: 3em;
+}
+
+.jumbo img {
+  width: 100%;
+  height: auto;
+}
+
+.jumbo p,
+.jumbo h2 {
+  color: var(--secondary-color);
+}
+
+.jumbo p:first-of-type {
+  font-size: var(--font-size-medium1);
+}
+
+.jumbo h2 {
+  font-size: 4vw;
+}
+
+.jumbo p {
+  font-size: 2vw;
+}
+
+.grid {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.roundButton:hover {
-  background-color: lightgray;
+.grid article {
+  flex: 33%;
+  max-width: 33%;
+  padding: 0 8px;
+}
+
+.grid article img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+.tendencias h3,
+.tendencias p {
+  font-size: var(--font-size-medium1);
+}
+
+.tendencias p:first-of-type {
+  color: var(--accent-color);
+}
+
+.tendencias h3 {
+  margin: 0.5em 0;
+}
+
+.nuevo h3 {
+  margin-top: 2.5em;
+  font-size: 1.2rem;
 }
 
 .chip {
-  width: 100px;
+  width: fit-content;
   height: 40px;
-  border-radius: 25px;
+  border-radius: 100px;
+  padding: 0 1em;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: green;
+  background-color: var(--secondary-color);
 }
 
 .chip:hover {
-  background-color: lightgray;
+  background-color: var(--accent-color);
 }
 
-.jumbo {
-  background-image: url("https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_1903,c_limit/8e2678cc-7e77-4467-8f45-574b39af1e49/nike-just-do-it.jpg");
-  color: white;
+.movedChip {
+  position: relative;
+  bottom: 5em;
+  left: 3em;
+}
+
+/* FOOTER STYLES */
+
+.ulCaption {
+  font-size: var(--font-size-medium2);
+  color: var(--secondary-color);
+}
+
+.ulItem {
+  font-size: var(--font-size-small);
+  color: var(--accent-color);
+}
+
+.ulItem:hover {
+  color: var(--secondary-color);
+}
+
+.footerListas {
+  display: flex;
+}
+
+.footerListas li {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.redes {
+  display: flex;
+}
+
+.redes div {
+  background-color: var(--accent-color);
+  margin-left: 1em;
+}
+
+.datos span {
+  color: var(--accent-color);
+  font-size: var(--font-size-small);
+}
+
+.datos a,
+.datos i {
+  color: var(--secondary-color);
+  font-size: var(--font-size-small);
+}
+
+/* MEDIA QUERYS */
+
+@media screen and (max-width: 800px) {
+  .grid article {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .grid article {
+    flex: 100%;
+    max-width: 100%;
+  }
 }
