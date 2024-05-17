@@ -14,9 +14,7 @@
   --primary-font: "Helvetica Now Text Medium";
   --secondary-font: "Trade Gothic";
   --font-size-large: 24px;
-  --font-size-medium1: 16px;
-  --font-size-medium2: 14px;
-  --font-size-small: 12px;
+  --font-size-small: 16px;
   --primary-color: #111111;
   --secondary-color: #f5f5f5;
   --accent-color: #7e7e7e;
@@ -24,12 +22,12 @@
 
 /* GLOBAL STYLES */
 
-* {
+body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: var(--primary-font);
-  font-size: var(--font-size-medium);
+  font-size: var(--font-size-small);
   color: var(--primary-color);
 }
 
@@ -55,26 +53,6 @@ nav {
   padding: 0 3em;
 }
 
-nav ul li {
-  border-bottom: 2px solid transparent;
-}
-
-nav ul li:hover {
-  border-bottom: 2px solid var(--primary-color);
-}
-
-nav div:last-of-type {
-  align-items: center;
-}
-
-nav div:last-of-type a {
-  margin-left: 2em;
-}
-
-nav div:last-of-type a i {
-  font-size: 1rem;
-}
-
 section h2:not(.jumboTitle) {
   font-size: var(--font-size-large);
   margin-bottom: 1.5em;
@@ -89,11 +67,6 @@ footer {
   padding: 3em 3em 0 3em;
   display: flex;
   flex-direction: column;
-}
-
-footer > div {
-  display: flex;
-  justify-content: space-between;
 }
 
 .flex {
@@ -143,14 +116,21 @@ footer > div {
   padding-right: 1em;
 }
 
-.headerTopPart li:hover {
+.headerTopPart li:last-of-type {
+  border-right: none;
+  padding-right: 0;
+}
+
+.headerTopPart li a:hover {
   color: var(--accent-color);
 }
 
-.headerTopPart svg {
-  width: 24px;
-  height: 24px;
-  padding: 0 16px;
+.headerTopPart > div:first-child a {
+  padding: 0 12px;
+}
+
+svg:hover {
+  fill: var(--accent-color);
 }
 
 .headerAd {
@@ -158,7 +138,8 @@ footer > div {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0.5em 0;
+  text-align: center;
+  padding: 0.5em 1em;
   margin-bottom: 1em;
   background-color: var(--secondary-color);
 }
@@ -213,6 +194,43 @@ footer > div {
   outline: none;
 }
 
+/* NAV STYLES */
+
+nav > div:first-child {
+  width: 25%;
+}
+
+nav ul {
+  display: block;
+  text-align: center;
+  width: 50%;
+  height: 30px;
+  overflow: hidden;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  border-bottom: 2px solid transparent;
+}
+
+nav ul li:hover {
+  border-bottom: 2px solid var(--primary-color);
+}
+
+nav div:last-of-type {
+  align-items: center;
+}
+
+nav div:last-of-type a {
+  margin-left: 2em;
+}
+
+nav div:last-of-type a i {
+  font-size: 1rem;
+}
+
 /* BODY STYLES */
 
 .jumbo {
@@ -236,7 +254,7 @@ footer > div {
 }
 
 .jumbo p:first-of-type {
-  font-size: var(--font-size-medium1);
+  font-size: var(--font-size-small);
 }
 
 .jumbo h2 {
@@ -266,7 +284,7 @@ footer > div {
 
 .tendencias h3,
 .tendencias p {
-  font-size: var(--font-size-medium1);
+  font-size: var(--font-size-small);
 }
 
 .tendencias p:first-of-type {
@@ -305,22 +323,36 @@ footer > div {
 
 /* FOOTER STYLES */
 
-.ulCaption {
-  font-size: var(--font-size-medium2);
+footer > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+footer > div {
+  margin-bottom: 2em;
+}
+
+.ulCaption a {
+  font-size: var(--font-size-small);
   color: var(--secondary-color);
 }
 
-.ulItem {
+.ulItem a {
   font-size: var(--font-size-small);
   color: var(--accent-color);
 }
 
-.ulItem:hover {
+.ulItem a:hover {
   color: var(--secondary-color);
 }
 
 .footerListas {
   display: flex;
+}
+
+.footerListas ul {
+  margin-right: 2em;
+  max-width: 220px;
 }
 
 .footerListas li {
@@ -337,27 +369,56 @@ footer > div {
   margin-left: 1em;
 }
 
-.datos span {
+.derechos span {
   color: var(--accent-color);
   font-size: var(--font-size-small);
 }
 
-.datos a,
-.datos i {
+.derechos a,
+.derechos i {
   color: var(--secondary-color);
   font-size: var(--font-size-small);
 }
 
+.datos ul {
+  flex-wrap: wrap;
+  text-align: right;
+}
+
 /* MEDIA QUERYS */
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 768px) {
+  .headerTopPart {
+    display: none;
+  }
+
+  nav ul {
+    display: none;
+  }
+
   .grid article {
     flex: 50%;
     max-width: 50%;
   }
+
+  .grid article:last-of-type {
+    max-width: 100%;
+  }
+
+  footer > div {
+    flex-direction: column;
+  }
+
+  .footerListas {
+    flex-direction: column;
+  }
+
+  .datos {
+    flex-direction: column;
+  }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 375px) {
   .grid article {
     flex: 100%;
     max-width: 100%;
