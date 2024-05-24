@@ -219,15 +219,15 @@ nav ul li:hover {
   border-bottom: 2px solid var(--primary-color);
 }
 
-nav div:last-of-type {
+nav > div:last-of-type {
   align-items: center;
 }
 
-nav div:last-of-type a {
-  margin-left: 2em;
+nav > div:last-of-type a {
+  margin-left: 1em;
 }
 
-nav div:last-of-type a i {
+nav > div:last-of-type a i {
   font-size: 1rem;
 }
 
@@ -387,13 +387,27 @@ footer > div {
 
 /* MEDIA QUERYS */
 
+@media screen and (min-width: 761px) {
+  .responsiveSearch,
+  .responsiveMenu {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 768px) {
-  .headerTopPart {
+  .headerTopPart,
+  nav ul,
+  .searchInput {
     display: none;
   }
 
   nav ul {
     display: none;
+  }
+
+  .responsiveSearch,
+  .responsiveMenu {
+    display: flex;
   }
 
   .grid article {
@@ -409,12 +423,21 @@ footer > div {
     flex-direction: column;
   }
 
+  .redes {
+    margin-top: 1em;
+  }
+
+  .redes > div:first-of-type {
+    margin-left: 0;
+  }
+
   .footerListas {
     flex-direction: column;
   }
 
-  .datos {
+  .datos ul {
     flex-direction: column;
+    align-items: flex-start;
   }
 }
 
