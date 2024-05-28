@@ -204,7 +204,7 @@ nav ul {
   display: block;
   text-align: center;
   width: 50%;
-  height: 30px;
+  height: 20px;
   overflow: hidden;
 }
 
@@ -246,6 +246,7 @@ nav > div:last-of-type a i {
 .jumbo img {
   width: 100%;
   height: auto;
+  transform: scaleX(1);
 }
 
 .jumbo p,
@@ -271,9 +272,9 @@ nav > div:last-of-type a i {
 }
 
 .grid article {
-  flex: 33%;
-  max-width: 33%;
-  padding: 0 8px;
+  flex: 31%;
+  max-width: 31%;
+  padding: 0 4px;
 }
 
 .grid article img {
@@ -411,8 +412,8 @@ footer > div {
   }
 
   .grid article {
-    flex: 50%;
-    max-width: 50%;
+    flex: 47%;
+    max-width: 47%;
   }
 
   .grid article:last-of-type {
@@ -438,6 +439,24 @@ footer > div {
   .datos ul {
     flex-direction: column;
     align-items: flex-start;
+  }
+  
+  .datos ul li {
+    margin-top: 0.5em;
+  }
+
+  .jumbo {
+    height: 700px;
+  }
+  
+  .jumbo img {
+    transform: scaleX(4);
+    transform-origin: right;
+    height: 700px
+  }
+
+  .jumbo p, .jumbo h2 {
+    font-size: var(--font-size-large);
   }
 }
 
