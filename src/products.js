@@ -1,0 +1,76 @@
+const products = [
+  {
+    name: "",
+    price: 0,
+    stars: 0,
+    reviews: 0,
+    seller: "",
+    image: "",
+  },
+  {
+    name: "",
+    price: 0,
+    stars: 0,
+    reviews: 0,
+    seller: "",
+    image: "",
+  },
+  {
+    name: "",
+    price: 0,
+    stars: 0,
+    reviews: 0,
+    seller: "",
+    image: "",
+  },
+  {
+    name: "",
+    price: 0,
+    stars: 0,
+    reviews: 0,
+    seller: "",
+    image: "",
+  },
+  {
+    name: "",
+    price: 0,
+    stars: 0,
+    reviews: 0,
+    seller: "",
+    image: "",
+  },
+  {
+    name: "",
+    price: 0,
+    stars: 0,
+    reviews: 0,
+    seller: "",
+    image: "",
+  },
+  {
+    name: "",
+    price: 0,
+    stars: 0,
+    reviews: 0,
+    seller: "",
+    image: "",
+  },
+  {
+    name: "",
+    price: 0,
+    stars: 0,
+    reviews: 0,
+    seller: "",
+    image: "",
+  },
+  {
+    name: "",
+    price: 0,
+    stars: 0,
+    reviews: 0,
+    seller: "",
+    image: "",
+  }
+];
+
+export { products };
