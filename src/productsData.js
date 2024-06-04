@@ -1,0 +1,76 @@
+const productsData = [
+  {
+    name: "Producto mega alucinante",
+    price: 20,
+    stars: 3,
+    reviews: 0,
+    seller: "Nike Inc.",
+    image: "https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_593,c_limit/800b58e3-b669-4dc3-a2d4-e68f5688d151/nike-just-do-it.jpg",
+  },
+  {
+    name: "Producto 2",
+    price: 100,
+    stars: 0,
+    reviews: 0,
+    seller: "Seller 2",
+    image: "https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_593,c_limit/800b58e3-b669-4dc3-a2d4-e68f5688d151/nike-just-do-it.jpg",
+  },
+  {
+    name: "Producto 3",
+    price: 0,
+    stars: 0,
+    reviews: 0,
+    seller: "Seller 3",
+    image: "https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_593,c_limit/800b58e3-b669-4dc3-a2d4-e68f5688d151/nike-just-do-it.jpg",
+  },
+  {
+    name: "Producto 4",
+    price: 0,
+    stars: 0,
+    reviews: 0,
+    seller: "Seller 4",
+    image: "https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_593,c_limit/800b58e3-b669-4dc3-a2d4-e68f5688d151/nike-just-do-it.jpg",
+  },
+  {
+    name: "Producto 5",
+    price: 0,
+    stars: 0,
+    reviews: 0,
+    seller: "Seller 5",
+    image: "https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_593,c_limit/800b58e3-b669-4dc3-a2d4-e68f5688d151/nike-just-do-it.jpg",
+  },
+  /*{
+    name: "",
+    price: 0,
+    stars: 0,
+    reviews: 0,
+    seller: "",
+    image: "",
+  },
+  {
+    name: "",
+    price: 0,
+    stars: 0,
+    reviews: 0,
+    seller: "",
+    image: "",
+  },
+  {
+    name: "",
+    price: 0,
+    stars: 0,
+    reviews: 0,
+    seller: "",
+    image: "",
+  },
+  {
+    name: "",
+    price: 0,
+    stars: 0,
+    reviews: 0,
+    seller: "",
+    image: "",
+  } */
+];
+
+export { productsData };
