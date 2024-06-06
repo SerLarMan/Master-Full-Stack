@@ -1,6 +1,6 @@
 export function setupProducts(element, products) {
-  const div = document.createElement("div");
-  div.classList.add("cardsContainer");
+  const div = document.querySelector(".cardsContainer");
+  div.textContent = "";
 
   products.forEach((product) => div.append(createProductCard(product)));
 
@@ -19,8 +19,11 @@ function createProductCard(product) {
   div.classList.add("container");
 
   // Seller del producto
+  const sellerDiv = document.createElement("div");
   const seller = document.createElement("span");
   seller.textContent = product.seller;
+  sellerDiv.append(seller);
+  sellerDiv.classList.add("sellerChip");
 
   // Estrellas del producto
   const starsContainer = document.createElement("div");
@@ -34,7 +37,7 @@ function createProductCard(product) {
   const price = document.createElement("span");
   price.textContent = `${product.price}€`;
 
-  div.append(seller);
+  div.append(sellerDiv);
   div.append(starsContainer);
   div.append(name);
   div.append(price);

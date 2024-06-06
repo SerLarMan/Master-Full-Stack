@@ -9,8 +9,10 @@ document.querySelector("#app").innerHTML = `
   </section>
   <section class="products">
     <h2>PRODUCTOS</h2>
+    <div class="cardsContainer"></div>
   </section>
 `;
 
 setupFilterForm(document.querySelector(".filter"));
 setupProducts(document.querySelector(".products"), products);
+

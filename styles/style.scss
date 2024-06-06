@@ -238,6 +238,7 @@ main {
 
 .cardsContainer {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -247,6 +248,7 @@ main {
   border-radius: 5px;
   width: 300px;
   margin: 0 1.5em 1.5em 0;
+  position: relative;
 
   img {
     width: 100%;
@@ -258,8 +260,19 @@ main {
 
   .container {
     padding: 2px 16px;
-    display: flex;
-    flex-direction: column;
+    margin: 1em 0;
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    row-gap: 0.5em;
+
+    > span:first-of-type {
+      font-weight: bold;
+    }
+
+    > span:last-of-type {
+      color: map-get($colors, "accent");
+    }
   }
 
   &:hover {
@@ -267,9 +280,54 @@ main {
   }
 }
 
-.filter form {
+.filterForm {
   display: flex;
   flex-direction: column;
+
+  div {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      margin-bottom: 0.5em;
+    }
+
+    select,
+    input {
+      margin-bottom: 1em;
+    }
+  }
+}
+
+.chip {
+  width: fit-content;
+  height: 40px;
+  border-radius: 100px;
+  padding: 0 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: map-get($colors, "secondary");
+
+  &:hover {
+    background-color: #e5e5e5;
+    cursor: pointer;
+  }
+}
+
+.sellerChip {
+  @extend .chip;
+
+  background-color: map-get($colors, "accent");
+  color: map-get($colors, "secondary");
+  position: absolute;
+  top: 1em;
+  left: 1em;
+
+  &:hover {
+    background-color: map-get($colors, "accent");
+    cursor: auto;
+  }
 }
 
 /* FOOTER STYLES */
@@ -364,8 +422,16 @@ footer {
   }
 
   main {
-    display: flex;
     flex-direction: column;
+
+    .filter,
+    .products {
+      width: 100%;
+    }
+  }
+
+  .filterForm {
+    flex-direction: row;
   }
 
   footer {
