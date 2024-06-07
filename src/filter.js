@@ -2,6 +2,9 @@ import { productsData as products } from "./productsData";
 import { setupProducts } from "./products.js";
 
 export function setupFilterForm(element) {
+  const h2 = document.createElement("h2");
+  h2.textContent = "FILTROS";
+
   const form = document.createElement("form");
   form.classList.add("filterForm");
 
@@ -14,7 +17,47 @@ export function setupFilterForm(element) {
   form.append(createSelect());
   form.append(createInput());
   form.append(button);
+
+  element.append(h2);
   element.append(form);
+}
+
+export function search() {
+  const select = document.querySelector(".filterForm select").value;
+  const price = document.querySelector(".filterForm input").value;
+
+  let filteredProducts = products;
+
+  if (select != "todos") {
+    filteredProducts = filteredProducts.filter(
+      (product) => product.seller == select
+    );
+  }
+
+  if (price && price > 0) {
+    filteredProducts = filteredProducts.filter(
+      (product) => product.price <= price
+    );
+  }
+
+  // Lista de productos sugeridos cuando los filtros no tienen resultados
+  if (filteredProducts.length == 0) {
+    while (filteredProducts.length < 3) {
+      let random = Math.floor(Math.random() * products.length);
+
+      if (!filteredProducts.includes(products[random])) {
+        filteredProducts.push(products[random]);
+      }
+
+      setupProducts(
+        document.querySelector(".products"),
+        filteredProducts,
+        true
+      );
+    }
+  } else {
+    setupProducts(document.querySelector(".products"), filteredProducts);
+  }
 }
 
 function createSelect() {
@@ -70,25 +113,4 @@ function createInput() {
   div.append(input);
 
   return div;
-}
-
-export function search() {
-  const select = document.querySelector(".filterForm select").value;
-  const price = document.querySelector(".filterForm input").value;
-
-  let filteredProducts = products;
-
-  if (select != "todos") {
-    filteredProducts = filteredProducts.filter(
-      (product) => product.seller == select
-    );
-  }
-
-  if (price && price > 0) {
-    filteredProducts = filteredProducts.filter(
-      (product) => product.price <= price
-    );
-  }
-
-  setupProducts(document.querySelector(".products"), filteredProducts);
 }

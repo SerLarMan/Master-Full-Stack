@@ -1,10 +1,40 @@
-export function setupProducts(element, products) {
-  const div = document.querySelector(".cardsContainer");
-  div.textContent = "";
+export function setupProducts(element, products, sugeridos = false) {
+  element.textContent = "";
 
-  products.forEach((product) => div.append(createProductCard(product)));
+  const h2 = document.createElement("h2");
+  h2.textContent = "PRODUCTOS";
 
-  element.append(div);
+  element.append(h2);
+
+  if (sugeridos) {
+    const divAviso = document.createElement("div");
+    divAviso.classList.add("divAviso");
+
+    const i = document.createElement("i");
+    i.className = "fas fa-circle-info";
+
+    const span = document.createElement("span");
+    span.textContent =
+      "Parece que no se han encontrado productos que coincidan con la búsqueda. No dejes de mirar nuestros productos sugeridos.";
+
+    divAviso.append(i);
+    divAviso.append(span);
+
+    const h3 = document.createElement("h3");
+    h3.textContent = "Productos sugeridos";
+
+    element.append(divAviso);
+    element.append(h3);
+  }
+
+  const cardsContainer = document.createElement("div");
+  cardsContainer.classList.add("cardsContainer");
+
+  products.forEach((product) =>
+    cardsContainer.append(createProductCard(product))
+  );
+
+  element.append(cardsContainer);
 }
 
 function createProductCard(product) {
