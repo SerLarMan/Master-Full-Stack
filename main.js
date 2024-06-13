@@ -1,11 +1,7 @@
-import "./src/styles/style.sccs";
 import { setUpCabecera } from "./src/components/Cabecera/cabecera";
 import { setUpCardContainer } from "./src/components/CardContainer/cardContainer";
 
-document.querySelector("#app").innerHTML = `
-  <header></header>
-  <main></main>
-`;
+const app = document.querySelector("#app");
 
-setUpCabecera(document.querySelector("header"));
-setUpCardContainer(document.querySelector("main"));
+app.append(setUpCabecera());
+app.append(setUpCardContainer());
