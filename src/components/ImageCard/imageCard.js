@@ -1,4 +1,5 @@
 import "../../styles/global.scss";
+import "./imageCard.scss";
 
 export function setUpImageCard(src) {
   const imageDiv = document.createElement("div");

@@ -51,12 +51,11 @@ function onTextButtonClicked(e) {
 
   if (e.target) {
     e.target.classList.add("clickedTextButton");
+    if (e.target.textContent == "Inicio") {
+      goHome();
+    }
   } else {
     e.classList.add("clickedTextButton");
-  }
-
-  if (e.target.textContent == "Inicio") {
-    goHome();
   }
 }
 
