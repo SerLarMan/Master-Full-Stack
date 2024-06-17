@@ -1,12 +1,13 @@
 import { setUpSearchBar } from "../SearchBar/searchBar";
 import { setUpTextButton } from "../TextButton/textButton";
 import { setUpIconButton } from "../IconButton/iconButton";
+import { setUpCardContainer } from "../CardContainer/cardContainer";
 
 import "../../styles/global.scss";
 import "./cabecera.scss";
 
 export function setUpCabecera() {
-  const header = document.createElement("header");
+  const header = document.querySelector("header");
 
   // Icono de pinterest
   const divBrand = document.createElement("div");
@@ -18,6 +19,7 @@ export function setUpCabecera() {
   brand.addEventListener("click", () => {
     const button = document.querySelector(".textButton");
     onTextButtonClicked(button);
+    goHome();
   });
 
   divBrand.append(brand);
@@ -37,8 +39,6 @@ export function setUpCabecera() {
   header.append(
     setUpIconButton("fas fa-comment-dots fa-lg", onIconButtonClicked)
   );
-
-  return header;
 }
 
 /**
@@ -54,6 +54,10 @@ function onTextButtonClicked(e) {
   } else {
     e.classList.add("clickedTextButton");
   }
+
+  if (e.target.textContent == "Inicio") {
+    goHome();
+  }
 }
 
 /**
@@ -65,10 +69,15 @@ function onIconButtonClicked(e) {
   buttons.forEach((button) => button.classList.remove("clickedIconButton"));
 
   if (!e.target.classList.contains("clickedIconButton")) {
-    console.log("añade")
     e.target.classList.add("clickedIconButton");
-    } else {
-    console.log("quita")
+  } else {
     e.target.classList.remove("clickedIconButton");
   }
+}
+
+function goHome() {
+  const input = document.querySelector("form > input");
+  input.value = "";
+
+  setUpCardContainer(undefined);
 }

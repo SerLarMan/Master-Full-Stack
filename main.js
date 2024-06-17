@@ -3,5 +3,10 @@ import { setUpCardContainer } from "./src/components/CardContainer/cardContainer
 
 const app = document.querySelector("#app");
 
-app.append(setUpCabecera());
-app.append(setUpCardContainer());
+const header = document.createElement('header')
+app.append(header)
+setUpCabecera();
+
+const main = document.createElement("main")
+app.append(main)
+setUpCardContainer();
