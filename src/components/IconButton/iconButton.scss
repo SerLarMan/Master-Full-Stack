@@ -1,19 +1,16 @@
 .iconButton {
   border: none;
+  border-radius: 50px;
   background-color: white;
-  color: lightgrey;
+  color: #767676;
   padding: 0.5em 0.75em;
 
   &:hover {
-    color: black;
-    background-color: lightgrey;
-    border-radius: 50px;
+    background-color: rgb(241, 241, 241);
     cursor: pointer;
   }
 }
 
 .clickedIconButton {
   color: black;
-  background-color: lightgrey;
-  border-radius: 50px;
 }

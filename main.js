@@ -9,5 +9,4 @@ setUpCabecera();
 
 const main = document.createElement("main");
 app.append(main);
-let columns = 5;
 setUpCardContainer(undefined);

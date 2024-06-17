@@ -1,5 +1,11 @@
+main {
+  display: flex;
+  justify-content: center;
+}
+
 .container {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   width: auto;
 }
@@ -7,7 +13,7 @@
 .column {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-right: 4px;
-  margin-left: 4px;
+  gap: 1em;
+  margin-right: 0.5em;
+  margin-left: 0.5em;
 }

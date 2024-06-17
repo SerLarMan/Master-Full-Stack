@@ -18,6 +18,8 @@ function generateImageColumns(images, columnCount) {
   const colsHeights = Array(columnCount).fill(0);
   const cols = [...Array(columnCount)].map(() => []);
 
+  console.log(images)
+
   images.forEach((image) => {
     // Se saca la columna con menos "altura" y el índice de esa columna
     const smallestHeight = Math.min(...colsHeights);
@@ -54,7 +56,7 @@ function renderColumn(col) {
 }
 
 function renderImage(image) {
-  return setUpImageCard(image.urls.thumb);
+  return setUpImageCard(image);
 }
 
 export function setUpCardContainer(query) {
@@ -65,7 +67,7 @@ export function setUpCardContainer(query) {
   const images = [];
   getImages(query).then((imagesPromise) => {
     imagesPromise.results.forEach((res) => images.push(res));
-    const columnsCount = 5;
+    const columnsCount = 7;
     const imageColumns = generateImageColumns(images, columnsCount);
 
     const container = document.createElement("div");

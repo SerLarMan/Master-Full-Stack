@@ -6,13 +6,18 @@ form {
 
   input {
     border: none;
-    background-color: lightgrey;
     border-radius: 20px;
+    background-color: rgb(241, 241, 241);
     padding: 1em;
     width: 100%;
 
     &:focus {
       border: none;
+      background-color: rgb(225, 225, 225);
+    }
+
+    &:hover {
+      background-color: rgb(225, 225, 225);
     }
   }
 }

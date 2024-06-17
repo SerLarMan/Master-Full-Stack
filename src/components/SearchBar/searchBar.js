@@ -9,7 +9,7 @@ export function setUpSearchBar() {
   const searchInput = document.createElement("input");
   searchInput.type = "text";
   searchInput.classList.add("fontAwesome");
-  searchInput.placeholder = "&#xf0e0; Busqueda";
+  searchInput.placeholder = "&#xf0e0; Buscar";
 
   searchForm.addEventListener("submit", (e) => {
     e.preventDefault();

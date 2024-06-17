@@ -1,12 +1,18 @@
 header {
-  margin-top: 1em;
+  margin: 1em 0 2em 0;
+  padding: 0 1em;
   display: flex;
 }
 
 .divBrand {
-  padding: 1em;
+  padding: 1em 0.5em;
 
   i:hover {
     cursor: pointer;
+  }
+
+  &:hover {
+    background-color: lightgrey;
+    border-radius: 50px;
   }
 }
