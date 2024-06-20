@@ -9,4 +9,4 @@ setUpCabecera();
 
 const main = document.createElement("main");
 app.append(main);
-setUpCardContainer(undefined);
+setUpCardContainer(undefined, "photos");

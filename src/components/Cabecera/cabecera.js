@@ -8,6 +8,7 @@ import "./cabecera.scss";
 
 export function setUpCabecera() {
   const header = document.querySelector("header");
+  header.textContent = "";
 
   // Icono de pinterest
   const divBrand = document.createElement("div");
@@ -31,7 +32,6 @@ export function setUpCabecera() {
   header.append(inicioButton);
 
   header.append(setUpTextButton("Explorar", onTextButtonClicked));
-  header.append(setUpTextButton("Crear", onTextButtonClicked));
 
   header.append(setUpSearchBar());
 
@@ -51,8 +51,12 @@ function onTextButtonClicked(e) {
 
   if (e.target) {
     e.target.classList.add("clickedTextButton");
+
+    // Se cambia de "pantalla" depende del botón
     if (e.target.textContent == "Inicio") {
       goHome();
+    } else if (e.target.textContent == "Explorar") {
+      goCollections();
     }
   } else {
     e.classList.add("clickedTextButton");
@@ -78,5 +82,12 @@ function goHome() {
   const input = document.querySelector("form > input");
   input.value = "";
 
-  setUpCardContainer(undefined);
+  setUpCardContainer(undefined, "photos");
+}
+
+function goCollections() {
+  const input = document.querySelector("form > input");
+  input.value = "";
+
+  setUpCardContainer(undefined, "collections");
 }

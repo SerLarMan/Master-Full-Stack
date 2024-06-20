@@ -11,17 +11,25 @@ export function setUpSearchBar() {
   searchInput.classList.add("fontAwesome");
   searchInput.placeholder = "&#xf0e0; Buscar";
 
-  searchForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    if(searchInput.value) {
-      setUpCardContainer(searchInput.value);
-    } else {
-      setUpCardContainer(undefined);
-    }
-  });
+  searchForm.addEventListener("submit", search);
 
   searchForm.append(searchInput);
 
   return searchForm;
+}
+
+function search(e) {
+  e.preventDefault();
+
+  const actualButtonClicked = document.querySelector("button.clickedTextButton");
+  const type =
+    actualButtonClicked.textContent == "Inicio" ? "photos" : "collections";
+
+  const input = document.querySelector("input");
+
+  if (input.value) {
+    setUpCardContainer(input.value, type);
+  } else {
+    setUpCardContainer(undefined, type);
+  }
 }
