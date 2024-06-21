@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+main {
+  transition: margin-left 0.5s;
+}
+
 .fontAwesome {
   font-family: "Helvetica", FontAwesome, sans-serif;
 }

@@ -55,14 +55,14 @@ function getRelativeImageHeight(image, targetWidth) {
   return relativeHeight;
 }
 
-function renderColumn(col, type) {
+function renderColumn(col, type, images) {
   const colDiv = document.createElement("div");
   colDiv.classList.add("column");
 
   col.forEach((image) => {
     type == "photos"
       ? colDiv.append(setUpImageCard(image))
-      : colDiv.append(setUpCollectionCard(image));
+      : colDiv.append(setUpCollectionCard(image, images));
   });
 
   return colDiv;
@@ -84,7 +84,7 @@ export function setUpCardContainer(query, type) {
     container.classList.add("container");
 
     imageColumns.forEach((col) => {
-      container.append(renderColumn(col, type));
+      container.append(renderColumn(col, type, images));
     });
 
     main.append(container);
@@ -98,16 +98,16 @@ export function setUpCardContainerByCollection(id) {
   // Query a la API de unsplash
   const images = [];
   getCollectionImages(id).then((imagesPromise) => {
-    imagesPromise.results.forEach((res) => images.push(res));
+    imagesPromise.forEach((res) => images.push(res));
 
     const columnsCount = 7;
-    const imageColumns = generateImageColumns(images, columnsCount, type);
+    const imageColumns = generateImageColumns(images, columnsCount, "photos");
 
     const container = document.createElement("div");
     container.classList.add("container");
 
     imageColumns.forEach((col) => {
-      container.append(renderColumn(col, type));
+      container.append(renderColumn(col, "photos"));
     });
 
     main.append(container);

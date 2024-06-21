@@ -35,9 +35,15 @@ export function setUpCabecera() {
 
   header.append(setUpSearchBar());
 
-  header.append(setUpIconButton("fas fa-bell fa-lg", onIconButtonClicked));
   header.append(
-    setUpIconButton("fas fa-comment-dots fa-lg", onIconButtonClicked)
+    setUpIconButton("fas fa-bell fa-lg", onIconButtonClicked, "Notificaciones")
+  );
+  header.append(
+    setUpIconButton(
+      "fas fa-comment-dots fa-lg",
+      onIconButtonClicked,
+      "Mensajes"
+    )
   );
 }
 
@@ -68,11 +74,16 @@ function onTextButtonClicked(e) {
  * @param {*} e evento
  */
 function onIconButtonClicked(e) {
-  const buttons = document.querySelectorAll(".iconButton");
-  buttons.forEach((button) => button.classList.remove("clickedIconButton"));
-
   if (!e.target.classList.contains("clickedIconButton")) {
+    const buttons = document.querySelectorAll(".iconButton");
+    buttons.forEach((button) => button.classList.remove("clickedIconButton"));
     e.target.classList.add("clickedIconButton");
+
+    const sidecanvas = document.querySelector(".sidecanvas");
+    sidecanvas.style.width = "250px";
+
+    const main = document.querySelector("main");
+    main.style.marginLeft = "250px";
   } else {
     e.target.classList.remove("clickedIconButton");
   }

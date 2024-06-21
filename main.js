@@ -1,5 +1,6 @@
 import { setUpCabecera } from "./src/components/Cabecera/cabecera";
 import { setUpCardContainer } from "./src/components/CardContainer/cardContainer";
+import { setUpOffCanvasMenu } from "./src/components/OffCanvasMenu/offCanvasMenu";
 
 const app = document.querySelector("#app");
 
@@ -10,3 +11,4 @@ setUpCabecera();
 const main = document.createElement("main");
 app.append(main);
 setUpCardContainer(undefined, "photos");
+setUpOffCanvasMenu();

@@ -3,7 +3,11 @@ import { setUpCardContainerByCollection } from "../CardContainer/cardContainer";
 import "../../styles/global.scss";
 import "./collectionCard.scss";
 
-export function setUpCollectionCard(image) {
+let COLLECTIONS = [];
+
+export function setUpCollectionCard(image, collections) {
+  COLLECTIONS = collections;
+
   const collectionCard = document.createElement("div");
   collectionCard.classList.add("collectionCard");
 
@@ -18,7 +22,9 @@ export function setUpCollectionCard(image) {
 }
 
 function displayCollectionPhotos(e) {
-  console.log(e.currentTarget.image);
+  const collection = COLLECTIONS.find(
+    (collection) => collection.cover_photo.id == e.currentTarget.image.id
+  );
 
-  setUpCardContainerByCollection(e.currentTarget.image.id);
+  setUpCardContainerByCollection(collection.id);
 }

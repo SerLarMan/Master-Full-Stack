@@ -11,12 +11,18 @@ export function setUpImageCard(image) {
   const img = document.createElement("img");
   img.src = image.urls.thumb;
   img.classList.add("displayImage");
-
+  
   const downloadButton = setUpIconButton("fas fa-download fa-lg", () => {});
   downloadButton.classList.add("downloadButton");
+  downloadButton.download = image.links.download;
+  downloadButton.addEventListener("click", downloadImage);
 
   imageCard.append(img);
   imageCard.append(setUpUserInfo(image.user));
   imageCard.append(downloadButton);
   return imageCard;
+}
+
+function downloadImage(e) {
+  window.open(e.currentTarget.download, '_blank');
 }
