@@ -15,9 +15,9 @@
     border-radius: 6px;
     padding: 1em;
     width: fit-content;
-    top: 1.5em;
+    top: 1em;
     right: 105%;
-    font-size: 0.5rem;
+    font-size: 0.75rem;
     position: absolute;
     z-index: 1;
 
@@ -45,4 +45,12 @@
 
 .clickedIconButton {
   color: black;
+}
+
+@media only screen and (max-width: 600px) {
+  header {
+    .iconButton {
+      display: none;
+    }
+  }
 }

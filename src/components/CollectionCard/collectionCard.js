@@ -1,4 +1,5 @@
 import { setUpCardContainerByCollection } from "../CardContainer/cardContainer";
+import { setUpOffCanvasMenu } from "../OffCanvasMenu/offCanvasMenu";
 
 import "../../styles/global.scss";
 import "./collectionCard.scss";
@@ -8,8 +9,12 @@ let COLLECTIONS = [];
 export function setUpCollectionCard(image, collections) {
   COLLECTIONS = collections;
 
-  const collectionCard = document.createElement("div");
+  const collectionCard = document.createElement("article");
   collectionCard.classList.add("collectionCard");
+
+  const h3 = document.createElement("h3");
+  h3.textContent = "Colección";
+  h3.classList.add("hidden");
 
   const img = document.createElement("img");
   img.src = image.urls.thumb;
@@ -17,6 +22,7 @@ export function setUpCollectionCard(image, collections) {
   img.image = image;
   img.addEventListener("click", displayCollectionPhotos);
 
+  collectionCard.append(h3);
   collectionCard.append(img);
   return collectionCard;
 }
@@ -27,4 +33,5 @@ function displayCollectionPhotos(e) {
   );
 
   setUpCardContainerByCollection(collection.id);
+  setUpOffCanvasMenu();
 }

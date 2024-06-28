@@ -7,6 +7,12 @@ import "./cardContainer.scss";
 const CLIENTID = "vHkgxEBcvsBZ7kmjwUB5t-0IY0oxZnajPAiPa6dZlwg";
 const UNSPLASH_ROOT = "https://api.unsplash.com";
 
+/**
+ * Función que obtiene las imagenes de una búsqueda de la apì
+ * @param {*} query
+ * @param {*} type
+ * @returns
+ */
 async function getImages(query, type) {
   const res = await fetch(
     `${UNSPLASH_ROOT}/search/${type}?query=${query}&client_id=${CLIENTID}&per_page=20`
@@ -15,6 +21,11 @@ async function getImages(query, type) {
   return await res.json();
 }
 
+/**
+ * Función que obtiene las imagenes de una colección de la api
+ * @param {*} id
+ * @returns
+ */
 async function getCollectionImages(id) {
   const res = await fetch(
     `${UNSPLASH_ROOT}/collections/${id}/photos?client_id=${CLIENTID}&per_page=20`
@@ -26,8 +37,6 @@ async function getCollectionImages(id) {
 function generateImageColumns(images, columnCount, type) {
   const colsHeights = Array(columnCount).fill(0);
   const cols = [...Array(columnCount)].map(() => []);
-
-  console.log(images);
 
   images.forEach((image) => {
     const realImage = type == "photos" ? image : image.cover_photo;
@@ -48,6 +57,12 @@ function generateImageColumns(images, columnCount, type) {
   return cols;
 }
 
+/**
+ * Función que calcula la altura relativa de cada imagen dependiendo de si ancho
+ * @param {*} image
+ * @param {*} targetWidth
+ * @returns
+ */
 function getRelativeImageHeight(image, targetWidth) {
   const widthQuotient = targetWidth / image.width;
   const relativeHeight = widthQuotient * image.height;
@@ -55,6 +70,13 @@ function getRelativeImageHeight(image, targetWidth) {
   return relativeHeight;
 }
 
+/**
+ * Función que añade a cada columna imagenes o colecciones
+ * @param {*} col
+ * @param {*} type
+ * @param {*} images
+ * @returns
+ */
 function renderColumn(col, type, images) {
   const colDiv = document.createElement("div");
   colDiv.classList.add("column");
@@ -80,12 +102,21 @@ export function setUpCardContainer(query, type) {
     const columnsCount = 7;
     const imageColumns = generateImageColumns(images, columnsCount, type);
 
-    const container = document.createElement("div");
+    const container = document.createElement("section");
     container.classList.add("container");
 
+    const h2 = document.createElement("h2");
+    type == "photos"
+      ? (h2.textContent = "Disfruta de nuestras imagenes")
+      : (h2.textContent = "Explora nuestra variedad de colecciones");
+    container.append(h2);
+
+    const div = document.createElement("div");
+    div.classList.add("colContainer");
     imageColumns.forEach((col) => {
-      container.append(renderColumn(col, type, images));
+      div.append(renderColumn(col, type, images));
     });
+    container.append(div);
 
     main.append(container);
   });
@@ -103,12 +134,19 @@ export function setUpCardContainerByCollection(id) {
     const columnsCount = 7;
     const imageColumns = generateImageColumns(images, columnsCount, "photos");
 
-    const container = document.createElement("div");
+    const container = document.createElement("section");
     container.classList.add("container");
 
+    const h2 = document.createElement("h2");
+    h2.textContent = "Disfruta de las imagenes de la colección";
+    container.append(h2);
+
+    const div = document.createElement("div");
+    div.classList.add("colContainer");
     imageColumns.forEach((col) => {
-      container.append(renderColumn(col, "photos"));
+      div.append(renderColumn(col, "photos"));
     });
+    container.append(div);
 
     main.append(container);
   });

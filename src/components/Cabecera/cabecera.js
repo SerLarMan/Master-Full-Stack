@@ -2,13 +2,21 @@ import { setUpSearchBar } from "../SearchBar/searchBar";
 import { setUpTextButton } from "../TextButton/textButton";
 import { setUpIconButton } from "../IconButton/iconButton";
 import { setUpCardContainer } from "../CardContainer/cardContainer";
+import { setUpNotificacionesSide } from "../NotificacionesSide/notificacionesSide";
+import { setUpMensajesSide } from "../MensajesSide/mensajesSide";
 
 import "../../styles/global.scss";
 import "./cabecera.scss";
+import { setUpOffCanvasMenu } from "../OffCanvasMenu/offCanvasMenu";
 
 export function setUpCabecera() {
   const header = document.querySelector("header");
   header.textContent = "";
+
+  const h1 = document.createElement("h1");
+  h1.textContent = "Pinterest clone";
+  h1.classList.add("hidden");
+  header.append(h1);
 
   // Icono de pinterest
   const divBrand = document.createElement("div");
@@ -74,31 +82,48 @@ function onTextButtonClicked(e) {
  * @param {*} e evento
  */
 function onIconButtonClicked(e) {
+  const sidecanvas = document.querySelector(".sidecanvas");
+
   if (!e.target.classList.contains("clickedIconButton")) {
     const buttons = document.querySelectorAll(".iconButton");
     buttons.forEach((button) => button.classList.remove("clickedIconButton"));
     e.target.classList.add("clickedIconButton");
 
-    const sidecanvas = document.querySelector(".sidecanvas");
-    sidecanvas.style.width = "250px";
-
-    const main = document.querySelector("main");
-    main.style.marginLeft = "250px";
+    sidecanvas.style.width = "350px";
   } else {
     e.target.classList.remove("clickedIconButton");
+    sidecanvas.style.width = "0";
+  }
+
+  // Se cambia el contenido del sidecanvas depende del botón pulsado
+  const clickedButton = document.querySelector(".clickedIconButton");
+  if (clickedButton) {
+    if (clickedButton.textContent == "Notificaciones") {
+      setUpNotificacionesSide();
+    } else if (clickedButton.textContent == "Mensajes") {
+      setUpMensajesSide();
+    }
   }
 }
 
+/**
+ * Función que redirige a pantalla de inicio
+ */
 function goHome() {
   const input = document.querySelector("form > input");
   input.value = "";
 
   setUpCardContainer(undefined, "photos");
+  setUpOffCanvasMenu();
 }
 
+/**
+ * Función que redirige a la pantalla de colecciones
+ */
 function goCollections() {
   const input = document.querySelector("form > input");
   input.value = "";
 
   setUpCardContainer(undefined, "collections");
+  setUpOffCanvasMenu();
 }

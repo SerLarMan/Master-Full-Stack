@@ -1,4 +1,5 @@
 import { setUpCardContainer } from "../CardContainer/cardContainer";
+import { setUpOffCanvasMenu } from "../OffCanvasMenu/offCanvasMenu";
 
 import "../../styles/global.scss";
 import "./searchBar.scss";
@@ -8,8 +9,7 @@ export function setUpSearchBar() {
 
   const searchInput = document.createElement("input");
   searchInput.type = "text";
-  searchInput.classList.add("fontAwesome");
-  searchInput.placeholder = "&#xf0e0; Buscar";
+  searchInput.placeholder = "Buscar";
 
   searchForm.addEventListener("submit", search);
 
@@ -21,7 +21,9 @@ export function setUpSearchBar() {
 function search(e) {
   e.preventDefault();
 
-  const actualButtonClicked = document.querySelector("button.clickedTextButton");
+  const actualButtonClicked = document.querySelector(
+    "button.clickedTextButton"
+  );
   const type =
     actualButtonClicked.textContent == "Inicio" ? "photos" : "collections";
 
@@ -29,7 +31,11 @@ function search(e) {
 
   if (input.value) {
     setUpCardContainer(input.value, type);
+    setUpOffCanvasMenu();
   } else {
     setUpCardContainer(undefined, type);
+    setUpOffCanvasMenu();
   }
+
+  input.value = "";
 }
