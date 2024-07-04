@@ -1,6 +1,8 @@
 import { setUpGameOption } from "../gameOption/gameOption";
 
 export function setUpGameOptionContainer(component) {
+  component.textContent = "";
+
   const gameOptionContainer = document.createElement("div");
 
   gameOptionContainer.append(setUpGameOption("", "Come Cocos"));
@@ -8,5 +10,5 @@ export function setUpGameOptionContainer(component) {
   gameOptionContainer.append(setUpGameOption("", "3 en Raya"));
 
   component.append(gameOptionContainer);
-  return component
+  return component;
 }

@@ -4,7 +4,11 @@ import "./gameOption.scss";
 
 export function setUpGameOption(image, name) {
   const container = document.createElement("div");
-  container.addEventListener("click", goToGame);
+  container.addEventListener("click", () => {
+    const main = document.querySelector("main");
+    setUpGameContainer(main, name);
+  });
+  container.classList.add("gameOptionContainer");
 
   const gameImage = document.createElement("img");
   gameImage.src = image;
@@ -15,10 +19,4 @@ export function setUpGameOption(image, name) {
   container.append(gameImage);
   container.append(gameName);
   return container;
-}
-
-function goToGame(name) {
-  console.log(name);
-  const main = document.querySelector("main");
-  setUpGameContainer(main, name);
 }
