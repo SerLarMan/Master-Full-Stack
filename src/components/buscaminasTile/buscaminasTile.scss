@@ -5,13 +5,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+
+  span {
+    position: absolute;
+  }
 
   &:hover {
     cursor: pointer;
   }
 }
 
-.withFlag {
+.wrong {
   background-color: red;
 }
 

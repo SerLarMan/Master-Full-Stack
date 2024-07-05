@@ -3,17 +3,17 @@ import { setUpGameContainer } from "../gameContainer/gameContainer";
 import "./gameOption.scss";
 
 export function setUpGameOption(image, name) {
-  const container = document.createElement("div");
+  const container = document.createElement("article");
+  container.classList.add("gameCard");
   container.addEventListener("click", () => {
     const main = document.querySelector("main");
     setUpGameContainer(main, name);
   });
-  container.classList.add("gameOptionContainer");
 
   const gameImage = document.createElement("img");
   gameImage.src = image;
 
-  const gameName = document.createElement("span");
+  const gameName = document.createElement("h3");
   gameName.textContent = name;
 
   container.append(gameImage);

@@ -1,21 +1,33 @@
 import { setUpBuscaminasTile } from "../buscaminasTile/buscaminasTile";
+import { setUpGameContainer } from "../gameContainer/gameContainer";
 
 import "./buscaminas.scss";
 
-export let gMines = 10;
+export function setUpBuscaminas(width, height, minesNumber) {
+  const div = document.createElement("div");
 
-export function setUpBuscaminas() {
+  const button = document.createElement("button");
+  button.textContent = "Reset";
+  button.addEventListener("click", () => {
+    const main = document.querySelector("main");
+    setUpGameContainer(main, "Busca Minas");
+  });
+
   const board = document.createElement("div");
   board.classList.add("board");
+  board.flags = minesNumber;
+  board.mines = minesNumber;
 
-  createBoard(10, 8, board);
+  createBoard(width, height, board);
 
-  return board;
+  div.append(button);
+  div.append(board);
+  return div;
 }
 
 function createBoard(x, y, board) {
   let tiles = [];
-  let mines = createMines(x, y);
+  let mines = createMines(x, y, board.mines);
 
   for (let i = 0; i < y; i++) {
     let auxArray = [];
@@ -38,17 +50,17 @@ function drawBoard(tiles, board) {
     const row = document.createElement("div");
     row.classList.add("row");
     tileRow.forEach((tile) => {
-      row.append(setUpBuscaminasTile(tile, gMines));
+      row.append(setUpBuscaminasTile(tile));
     });
 
     board.append(row);
   }
 }
 
-function createMines(x, y) {
+function createMines(x, y, minesNumber) {
   let mines = [];
 
-  while (mines.length < gMines) {
+  while (mines.length < minesNumber) {
     let minesCoordX = Math.floor(Math.random() * x + 1);
     let minesCoordY = Math.floor(Math.random() * y + 1);
 
