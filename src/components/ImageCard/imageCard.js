@@ -16,10 +16,9 @@ export function setUpImageCard(image) {
   img.src = image.urls.thumb;
   img.classList.add("displayImage");
 
-  const downloadButton = setUpIconButton("fas fa-download fa-lg", () => {});
+  const downloadButton = setUpIconButton("fas fa-download fa-lg", downloadImage, 'Descargar');
   downloadButton.classList.add("downloadButton");
   downloadButton.download = image.links.download;
-  downloadButton.addEventListener("click", downloadImage);
 
   imageCard.append(h3);
   imageCard.append(img);
