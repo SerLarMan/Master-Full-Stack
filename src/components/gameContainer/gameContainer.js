@@ -1,5 +1,7 @@
 import { setUpGameOptionContainer } from "../gameOptionContainer/gameOptionContainer";
 import { setUpBuscaminas } from "../buscaminas/buscaminas";
+import { setUpTresraya } from "../tresraya/tresraya";
+import { setUpWordle } from "../wordle/wordle";
 
 import "./gameContainer.scss";
 
@@ -24,12 +26,14 @@ export function setUpGameContainer(component, name) {
   const gameSection = document.createElement("section");
 
   switch (name) {
-    case "Come Cocos":
+    case "Wordle":
+      gameSection.append(setUpWordle());
       break;
     case "Busca Minas":
       gameSection.append(setUpBuscaminas(8, 8, 10));
       break;
     case "3 en Raya":
+      gameSection.append(setUpTresraya(10, 10));
   }
 
   component.append(titleSection);

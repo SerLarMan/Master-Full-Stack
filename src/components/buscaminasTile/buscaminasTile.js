@@ -18,6 +18,10 @@ export function setUpBuscaminasTile(tile) {
   return tileDiv;
 }
 
+/**
+ * Función que le da la funcionalidad de click a cada casilla
+ * @param {*} e
+ */
 function clickTile(e) {
   const tile = getTileFromEvent(e);
   if (tile && tile.clickable) {
@@ -25,6 +29,11 @@ function clickTile(e) {
   }
 }
 
+/**
+ * Función que busca la casilla clickada de entre todas
+ * @param {*} e
+ * @returns la casilla clickada
+ */
 function getTileFromEvent(e) {
   const tiles = document.querySelectorAll(".tile");
   return Array.from(tiles).find(
@@ -32,6 +41,11 @@ function getTileFromEvent(e) {
   );
 }
 
+/**
+ * Función que diferencia si el click ha sido izquierdo o derecho
+ * @param {*} e
+ * @param {*} tile la casilla clickada
+ */
 function handleTileClick(e, tile) {
   if (e.button === 0) {
     handleLeftClick(tile);
@@ -40,6 +54,10 @@ function handleTileClick(e, tile) {
   }
 }
 
+/**
+ * Función que maneja el click izquierdo
+ * @param {*} tile la casilla clickada
+ */
 function handleLeftClick(tile) {
   if (!tile.withFlag) {
     if (tile.firstChild.textContent === "💣") {
@@ -55,6 +73,10 @@ function handleLeftClick(tile) {
   }
 }
 
+/**
+ * Función que maneja el click derecho
+ * @param {*} tile la casilla clickada
+ */
 function handleRightClick(tile) {
   window.addEventListener("contextmenu", (e) => e.preventDefault());
   const board = document.querySelector(".board");
@@ -70,12 +92,22 @@ function handleRightClick(tile) {
   console.log(board.flags);
 }
 
+/**
+ * Función que quita una bandera de la casilla
+ * @param {*} tile la casilla clickada
+ * @param {*} board el elemento tablero
+ */
 function removeFlag(tile, board) {
   tile.withFlag = false;
   board.flags += 1;
   tile.removeChild(tile.lastElementChild);
 }
 
+/**
+ * Función que añade una bandera a la casilla
+ * @param {*} tile la casilla clickada
+ * @param {*} board el elemento tablero
+ */
 function addFlag(tile, board) {
   tile.withFlag = true;
   board.flags -= 1;
@@ -85,6 +117,11 @@ function addFlag(tile, board) {
   tile.append(span);
 }
 
+/**
+ * Función recursiva que clicka las casillas de alrededor cuando la
+ * casilla clickada no tiene ningún número
+ * @param {*} currTile la casilla actual
+ */
 function clearEmptyTiles(currTile) {
   const directions = [
     { x: -1, y: -1 },
@@ -117,6 +154,10 @@ function findTile(x, y) {
   return Array.from(tiles).find((tile) => tile.x === x && tile.y === y);
 }
 
+/**
+ * Función que descubre la casilla clickada
+ * @param {*} tile la casilla clickada
+ */
 function showTile(tile) {
   if (
     !tile.classList.contains("clicked") &&
@@ -128,15 +169,22 @@ function showTile(tile) {
   }
 }
 
+/**
+ * Función que comprueba si la casilla clickada está vacía
+ * @param {*} tile la casilla clickada
+ */
 function checkEmpty(tile) {
   if (!tile.firstChild.textContent) {
     clearEmptyTiles(tile);
   }
 }
 
+/**
+ * Función que se encarga de la condición de victoria en el juego
+ */
 function winGame() {
   const tiles = Array.from(document.querySelectorAll(".tile:not(.clicked)"));
-  
+
   if (tiles.every((tile) => tile.firstChild.textContent === "💣")) {
     console.log("you won");
     tiles.forEach((tile) => {
@@ -145,6 +193,9 @@ function winGame() {
   }
 }
 
+/**
+ * Función que se encarga de la condición de derrota en el juego
+ */
 function endGame() {
   const tiles = document.querySelectorAll(".tile");
   tiles.forEach((tile) => {
@@ -161,4 +212,5 @@ function endGame() {
       tile.append(span);
     }
   });
+  console.log("you lose");
 }

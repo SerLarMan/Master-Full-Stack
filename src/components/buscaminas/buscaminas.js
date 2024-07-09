@@ -25,13 +25,20 @@ export function setUpBuscaminas(width, height, minesNumber) {
   return div;
 }
 
-function createBoard(x, y, board) {
+/**
+ * Función que crea el tablero del buscaminas lógicamente
+ * @param {*} width ancho del tablero
+ * @param {*} height alto del tablero
+ * @param {*} board el elemento tablero
+ */
+function createBoard(width, height, board) {
   let tiles = [];
-  let mines = createMines(x, y, board.mines);
+  let mines = createMines(width, height, board.mines);
 
-  for (let i = 0; i < y; i++) {
+  // Se rellena el tablero dependiendo de las coordenadas donde se han generado las minas
+  for (let i = 0; i < height; i++) {
     let auxArray = [];
-    for (let j = 0; j < x; j++) {
+    for (let j = 0; j < width; j++) {
       let tile = mines.find((mine) => mine.x == j + 1 && mine.y == i + 1);
       tile
         ? auxArray.push({ x: j, y: i, value: "💣" })
@@ -45,6 +52,11 @@ function createBoard(x, y, board) {
   drawBoard(tiles, board);
 }
 
+/**
+ * Función que dibuja el tablero
+ * @param {*} tiles 
+ * @param {*} board 
+ */
 function drawBoard(tiles, board) {
   for (let tileRow of tiles) {
     const row = document.createElement("div");
@@ -57,12 +69,19 @@ function drawBoard(tiles, board) {
   }
 }
 
-function createMines(x, y, minesNumber) {
+/**
+ * Función que genera aleatoriamente las coordenadas de las minas en el tablero
+ * @param {*} width ancho del tablero
+ * @param {*} height alto del tablero
+ * @param {*} minesNumber el número de minas total en el tablero
+ * @returns array de las minas con sus posiciones
+ */
+function createMines(width, height, minesNumber) {
   let mines = [];
 
   while (mines.length < minesNumber) {
-    let minesCoordX = Math.floor(Math.random() * x + 1);
-    let minesCoordY = Math.floor(Math.random() * y + 1);
+    let minesCoordX = Math.floor(Math.random() * width + 1);
+    let minesCoordY = Math.floor(Math.random() * height + 1);
 
     if (
       mines.every((mine) => mine.x !== minesCoordX || mine.y !== minesCoordY)
@@ -74,6 +93,13 @@ function createMines(x, y, minesNumber) {
   return mines;
 }
 
+/**
+ * Función que cambia el número que contiene las casillas colindantes con minas
+ * para saber cuantas minas tiene alrededor
+ * @param {*} mines array que contiene las minas con sus posiciones
+ * @param {*} tiles array con las casillas del tablero
+ * @returns array con las casillas del tablero modificada
+ */
 function calculateNumbers(mines, tiles) {
   const directions = [
     { x: -1, y: -1 },
