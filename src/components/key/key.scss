@@ -1,0 +1,22 @@
+.key {
+  background-color: #D2D4D8;
+  color: black;
+  padding: 1em 0.75em;
+  margin: 0.2em;
+  border-radius: 5px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.correct {
+  background-color: #6BAA64;
+}
+
+.wrong {
+  background-color: #787C7F;
+}
+
+.badposition {
+  background-color: #C9B457;
+}

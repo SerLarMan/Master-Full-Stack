@@ -4,11 +4,11 @@ import { keys } from "../../data/keys";
 
 import "./wordle.scss";
 
+const index = Math.floor(Math.random() * words.length);
+export const randomWord = words[index].toUpperCase();
+
 export function setUpWordle() {
   const div = document.createElement("div");
-
-  const index = Math.floor(Math.random() * words.length);
-  const randomWord = words[index];
 
   div.append(createTable());
   div.append(createKeyBoard());
@@ -19,12 +19,12 @@ function createTable() {
   const article = document.createElement("article");
   const table = document.createElement("table");
 
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 6; i++) {
     const tr = document.createElement("tr");
-
+    tr.order = i;
     for (let j = 0; j < 5; j++) {
       const td = document.createElement("td");
-      td.textContent = j;
+      td.textContent = " ";
       tr.append(td);
     }
 

@@ -36,7 +36,7 @@ export function setUpGameContainer(component, name) {
       gameSection.append(setUpTresraya(10, 10));
   }
 
-  component.append(titleSection);
+  //component.append(titleSection);
   component.append(gameSection);
   return component;
 }
