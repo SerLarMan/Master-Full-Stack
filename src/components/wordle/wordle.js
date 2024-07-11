@@ -24,7 +24,9 @@ function createTable() {
     tr.order = i;
     for (let j = 0; j < 5; j++) {
       const td = document.createElement("td");
-      td.textContent = " ";
+      const span = document.createElement("span");
+      span.textContent = " ";
+      td.append(span);
       tr.append(td);
     }
 
@@ -55,6 +57,10 @@ function createKeyBoard() {
   for (let i = 20; i < 27; i++) {
     thirdRow.append(setUpKey(keys[i]));
   }
+
+  const deleteButton = document.createElement("div")
+  deleteButton.append(setUpKey("" , "fas fa-delete-left"))
+  thirdRow.append(deleteButton)
 
   article.append(firstRow);
   article.append(secondRow);

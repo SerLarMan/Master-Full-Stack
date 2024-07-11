@@ -1,58 +1,116 @@
 import { randomWord } from "../wordle/wordle";
+import { words } from "../../data/words";
 
 import "./key.scss";
 
-export function setUpKey(letter) {
+export function setUpKey(letter, icon) {
   const div = document.createElement("div");
-  div.clickable = true;
-  div.addEventListener("click", clickKey);
   div.classList.add("key");
 
   const span = document.createElement("span");
-  span.textContent = letter.toUpperCase();
+  if (letter) {
+    span.textContent = letter.toUpperCase();
+    span.delete = false;
+  } else {
+    span.className = icon;
+    span.delete = true;
+    div.style.width = "4em";
+  }
+  span.clickable = true;
+  span.addEventListener("mouseup", clickKey);
 
   div.append(span);
   return div;
 }
 
 function clickKey(e) {
-  const key = e.currentTarget.children[0];
+  console.log(e)
+  if (e.currentTarget.clickable) {
+    const key = e.currentTarget;
 
-  const tdList = document.querySelectorAll("td");
-  const tdEmpty = Array.from(tdList).find((td) => td.textContent == " ");
-  if (tdEmpty) {
-    tdEmpty.textContent = key.textContent;
-    checkRowComplete(tdEmpty.parentElement, key);
+    const tdList = document.querySelectorAll("td");
+    if (!key.delete) {
+      const tdEmpty = Array.from(tdList).find(
+        (td) => td.children[0].textContent == " "
+      );
+      if (tdEmpty) {
+        tdEmpty.children[0].textContent = key.textContent;
+        checkRowComplete(tdEmpty.parentElement);
+      }
+    } else {
+      const tdEmptyPos = Array.from(tdList).findIndex(
+        (td) => td.children[0].textContent == " "
+      );
+
+      const minor = Array.from(tdList)[tdEmptyPos - 1];
+
+      if (minor) {
+        minor.children[0].textContent = " ";
+      }
+    }
   }
 
   console.log(randomWord);
 }
 
-function checkRowComplete(tr, key) {
-  if (Array.from(tr.cells).every((td) => td.textContent != " ")) {
-    checkCorrectLetters(tr, key);
+function checkRowComplete(tr) {
+  if (Array.from(tr.cells).every((td) => td.children[0].textContent != " ")) {
+    if (checkWordExists(tr)) {
+      checkCorrectLetters(tr);
+    } else {
+      const keys = document.querySelectorAll(".key");
+      keys.forEach((key) => {
+        if (!key.children[0].textContent) {
+          key.children[0].clickable = false;
+        }
+      });
+      console.log("la palabra no existe");
+    }
   }
 }
 
-function checkCorrectLetters(tr, key) {
+function checkWordExists(tr) {
+  let actualWord = "";
+  Array.from(tr.cells).forEach((td) => {
+    actualWord += td.children[0].textContent.toLowerCase();
+  });
+
+  return words.find((word) => word == actualWord);
+}
+
+function checkCorrectLetters(tr) {
   const chars = [...randomWord];
+  const keys = document.querySelectorAll(".key");
+  let key;
 
   console.log(chars);
 
   Array.from(tr.cells).forEach((td) => {
-    if (td.textContent == chars[td.cellIndex]) {
+    if (td.children[0].textContent == chars[td.cellIndex]) {
       td.classList.add("correct");
-      //key.classList.add("correct");
-    } else if (chars.includes(td.textContent)) {
+      key = Array.from(keys).find(
+        (key) => key.children[0].textContent == td.children[0].textContent
+      );
+      key.classList.remove("badposition");
+      key.classList.add("correct");
+      key.style.color = "white";
+    } else if (chars.includes(td.children[0].textContent)) {
       td.classList.add("badposition");
-      //key.classList.add("badposition");
+      key = Array.from(keys).find(
+        (key) => key.children[0].textContent == td.children[0].textContent
+      );
+      key.classList.add("badposition");
+      key.style.color = "white";
     } else {
       td.classList.add("wrong");
-      //key.classList.add("wrong");
+      key = Array.from(keys).find(
+        (key) => key.children[0].textContent == td.children[0].textContent
+      );
+      key.classList.add("wrong");
+      key.style.color = "white";
     }
     td.style.color = "white";
     td.style.border = "0";
-    //key.style.color = "white";
   });
 
   if (Array.from(tr.cells).every((td) => td.classList.contains("correct"))) {
@@ -72,5 +130,7 @@ function winGame() {
 }
 
 function endGame() {
+  const keys = document.querySelectorAll(".key");
+  keys.forEach((key) => (key.clickable = false));
   console.log("you lose");
 }
