@@ -2,6 +2,7 @@ import { setUpGameOptionContainer } from "../gameOptionContainer/gameOptionConta
 import { setUpBuscaminas } from "../buscaminas/buscaminas";
 import { setUpTresraya } from "../tresraya/tresraya";
 import { setUpWordle } from "../wordle/wordle";
+import { setUpToast } from "../toast/toast";
 
 import "./gameContainer.scss";
 
@@ -38,5 +39,6 @@ export function setUpGameContainer(component, name) {
 
   //component.append(titleSection);
   component.append(gameSection);
+  component.append(setUpToast());
   return component;
 }

@@ -1,11 +1,7 @@
 import { setUpKey } from "../key/key";
-import { words } from "../../data/words";
 import { keys } from "../../data/keys";
 
 import "./wordle.scss";
-
-const index = Math.floor(Math.random() * words.length);
-export const randomWord = words[index].toUpperCase();
 
 export function setUpWordle() {
   const div = document.createElement("div");
@@ -15,6 +11,10 @@ export function setUpWordle() {
   return div;
 }
 
+/**
+ * Función que crea la tabla para introducir las letras
+ * @returns 
+ */
 function createTable() {
   const article = document.createElement("article");
   const table = document.createElement("table");
@@ -37,6 +37,10 @@ function createTable() {
   return article;
 }
 
+/**
+ * Función que crea el teclado con las letras
+ * @returns 
+ */
 function createKeyBoard() {
   const article = document.createElement("article");
 
@@ -58,9 +62,9 @@ function createKeyBoard() {
     thirdRow.append(setUpKey(keys[i]));
   }
 
-  const deleteButton = document.createElement("div")
-  deleteButton.append(setUpKey("" , "fas fa-delete-left"))
-  thirdRow.append(deleteButton)
+  const deleteButton = document.createElement("div");
+  deleteButton.append(setUpKey("", "fas fa-delete-left"));
+  thirdRow.append(deleteButton);
 
   article.append(firstRow);
   article.append(secondRow);

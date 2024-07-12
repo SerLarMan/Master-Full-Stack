@@ -1,11 +1,15 @@
-import { randomWord } from "../wordle/wordle";
+import { showToast } from "../toast/toast";
 import { words } from "../../data/words";
 
 import "./key.scss";
 
-let currentRow = 0; // Variable para mantener la fila actual
+// Variable para llevar el control de la fila actual
+let currentRow = 0;
 
-// Función para configurar una tecla
+// La palabra aleatoria de cada partida
+const index = Math.floor(Math.random() * words.length);
+export const randomWord = words[index].toUpperCase();
+
 export function setUpKey(letter, icon) {
   const div = document.createElement("div");
   div.classList.add("key");
@@ -25,7 +29,10 @@ export function setUpKey(letter, icon) {
   return div;
 }
 
-// Función para manejar el clic en una tecla
+/**
+ * Función que le da la funcionalidad de click a cada tecla
+ * @param {*} e
+ */
 function handleKeyClick(e) {
   const key = e.currentTarget.children[0];
 
@@ -41,16 +48,23 @@ function handleKeyClick(e) {
   console.log(randomWord);
 }
 
-// Manejar una tecla de letra
+/**
+ * Función que añade la letra pulsada a la casilla
+ * @param {*} key la tecla pulsada
+ * @param {*} tdList lista de casilla en la tabla
+ */
 function handleLetterKey(key, tdList) {
   const tdEmpty = Array.from(tdList).find(
     (td) => td.children[0].textContent === " "
   );
+
   if (tdEmpty) {
     tdEmpty.children[0].textContent = key.textContent;
-    tdEmpty.classList.add("pop-in"); // Añadir clase de animación
 
-    // Eliminar la clase de animación después de que termine para que se pueda reutilizar
+    // Se añade la animación
+    tdEmpty.classList.add("pop-in");
+
+    // Se elimina la animación pasado un tiempo
     setTimeout(() => {
       tdEmpty.classList.remove("pop-in");
     }, 300);
@@ -59,7 +73,10 @@ function handleLetterKey(key, tdList) {
   }
 }
 
-// Manejar la tecla de eliminar
+/**
+ * Función que borra la ultima letra pulsada
+ * @param {*} tdList lista de casilla en la tabla
+ */
 function handleDeleteKey(tdList) {
   const filledCells = Array.from(tdList).filter(
     (td) => td.children[0].textContent !== " "
@@ -70,22 +87,28 @@ function handleDeleteKey(tdList) {
     lastFilled.children[0].textContent = " ";
   }
 
+  // Se vuelven a activar las letras
   const keys = document.querySelectorAll(".key");
   keys.forEach((key) => {
     key.addEventListener("mouseup", handleKeyClick);
   });
 }
 
-// Modificar la función checkRowComplete para animar las celdas si la palabra no existe
+/**
+ * Función que comprueba si la palabra se ha completado
+ * @param {*} tr fila de letras
+ */
 function checkRowComplete(tr) {
   if (Array.from(tr.cells).every((td) => td.children[0].textContent !== " ")) {
+    // Si la palabra existe
     if (wordExists(tr)) {
-      // Añadir animación a cada td con un retraso
+
+      // Se añade la animación a cada td
       Array.from(tr.cells).forEach((td, index) => {
         setTimeout(() => {
           td.classList.add("scale-y");
 
-          // Aplicar los colores después de la animación
+          // Se aplican los colores después de la animación
           td.addEventListener(
             "animationend",
             function () {
@@ -94,29 +117,32 @@ function checkRowComplete(tr) {
             },
             { once: true }
           );
-        }, index * 100); // Retraso de 100ms entre cada td
+        }, index * 100); // Retraso de la animación
       });
-      currentRow++; // Mover a la siguiente fila solo si la palabra es válida
+      currentRow++;
     } else {
-      // Animación de sacudida si la palabra no existe
+      // Se añade animación de sacudida si la palabra no existe
       Array.from(tr.cells).forEach((td, index) => {
         setTimeout(() => {
           td.classList.add("shake");
 
-          // Remover la clase después de la animación
           setTimeout(() => {
             td.classList.remove("shake");
-          }, 600); // Duración de la animación en milisegundos
-        }, index * 100); // Retraso de 100ms entre cada td
+          }, 600);
+        }, index * 100); // Retraso de la animación
       });
 
       disableAllKeysExceptDelete();
-      console.log("La palabra no existe");
+      showToast("La palabra no existe");
     }
   }
 }
 
-// Verificar si una palabra existe en la lista
+/**
+ * Función que comprueba si la palabra existe
+ * @param {*} tr fila de letras
+ * @returns 
+ */
 function wordExists(tr) {
   const actualWord = Array.from(tr.cells)
     .map((td) => td.children[0].textContent.toLowerCase())
@@ -124,7 +150,11 @@ function wordExists(tr) {
   return words.includes(actualWord);
 }
 
-// Modificar checkCorrectLetters para permitir el índice
+/**
+ * Función que comrpueba si cada letra introducida está en la palabra a acertar
+ * @param {*} td casilla de la fila
+ * @param {*} index 
+ */
 function checkCorrectLetters(td, index) {
   const chars = [...randomWord];
   const keys = document.querySelectorAll(".key");
@@ -134,6 +164,7 @@ function checkCorrectLetters(td, index) {
     (key) => key.children[0].textContent === keyChar
   );
 
+  // Se añade el color dependiendo si la letra esta o no
   if (keyChar === chars[index]) {
     setCorrect(td, keyElement);
   } else if (chars.includes(keyChar)) {
@@ -142,15 +173,20 @@ function checkCorrectLetters(td, index) {
     setWrong(td, keyElement);
   }
 
+  // Condiciones de finalización de la partida
   const tr = td.parentElement;
   if (isRowCorrect(tr)) {
-    winGame();
+    winGame(tr);
   } else if (tr.rowIndex === 5) {
     endGame();
   }
 }
 
-// Marcar una celda y tecla como correcta
+/**
+ * Función que marca una casilla y tecla como correcta
+ * @param {*} td la casilla
+ * @param {*} key la tecla
+ */
 function setCorrect(td, key) {
   td.classList.add("correct");
   td.style.color = "white";
@@ -159,7 +195,11 @@ function setCorrect(td, key) {
   key.style.color = "white";
 }
 
-// Marcar una celda y tecla como en posición incorrecta
+/**
+ * Función que marca una casilla y tecla como mal posicionada
+ * @param {*} td la casilla
+ * @param {*} key la tecla
+ */
 function setBadPosition(td, key) {
   td.classList.add("badposition");
   td.style.color = "white";
@@ -167,7 +207,11 @@ function setBadPosition(td, key) {
   key.style.color = "white";
 }
 
-// Marcar una celda y tecla como incorrecta
+/**
+ * Función que marca una casilla y tecla como incorrecta
+ * @param {*} td la casilla
+ * @param {*} key la tecla
+ */
 function setWrong(td, key) {
   td.classList.add("wrong");
   td.style.color = "white";
@@ -175,12 +219,18 @@ function setWrong(td, key) {
   key.style.color = "white";
 }
 
-// Verificar si todas las celdas de una fila son correctas
+/**
+ * Función que comprueba si todas las letras de una fila son correctas
+ * @param {*} tr 
+ * @returns 
+ */
 function isRowCorrect(tr) {
   return Array.from(tr.cells).every((td) => td.classList.contains("correct"));
 }
 
-// Deshabilitar todas las teclas excepto la de borrar
+/**
+ * Función que deshabilita todas las teclas menos la de borrar
+ */
 function disableAllKeysExceptDelete() {
   const keys = document.querySelectorAll(".key");
   keys.forEach((key) => {
@@ -190,20 +240,40 @@ function disableAllKeysExceptDelete() {
   });
 }
 
-// Deshabilitar todas las teclas
+/**
+ * Función que deshabilita todas las teclas
+ */
 function disableAllKeys() {
   const keys = document.querySelectorAll(".key");
   keys.forEach((key) => key.removeEventListener("mouseup", handleKeyClick));
 }
 
-// Función para manejar la victoria
-function winGame() {
+/**
+ * Función que se encarga de la condición de victoria en el juego
+ */
+function winGame(tr) {
   disableAllKeys();
-  console.log("You won");
+
+  Array.from(tr.cells).forEach((td, index) => {
+    setTimeout(() => {
+      td.classList.add("jump");
+
+      td.addEventListener(
+        "animationend",
+        function () {
+          td.classList.remove("jump");
+        },
+        { once: true }
+      );
+    }, index * 100);
+  });
+  showToast("¡Enhorabuena, has acertado!");
 }
 
-// Función para manejar el fin del juego
+/**
+ * Función que se encarga de la condición de derrota en el juego
+ */
 function endGame() {
   disableAllKeys();
-  console.log("You lose");
+  showToast("No has conseguido acertar");
 }

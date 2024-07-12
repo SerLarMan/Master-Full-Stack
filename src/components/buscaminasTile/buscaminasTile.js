@@ -1,3 +1,5 @@
+import { showToast } from "../toast/toast";
+
 import "./buscaminasTile.scss";
 
 export function setUpBuscaminasTile(tile) {
@@ -186,10 +188,10 @@ function winGame() {
   const tiles = Array.from(document.querySelectorAll(".tile:not(.clicked)"));
 
   if (tiles.every((tile) => tile.firstChild.textContent === "💣")) {
-    console.log("you won");
     tiles.forEach((tile) => {
       tile.clickable = false;
     });
+    showToast("¡Enhorabuena, no has explotado!")
   }
 }
 
@@ -212,5 +214,5 @@ function endGame() {
       tile.append(span);
     }
   });
-  console.log("you lose");
+  showToast("¡Has explotado!")
 }

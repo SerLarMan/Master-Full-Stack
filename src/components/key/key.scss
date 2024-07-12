@@ -40,6 +40,10 @@
   animation: shake 0.6s cubic-bezier(.36,.07,.19,.97) both;
 }
 
+.jump {
+  animation: jump 0.6s ease-out;
+}
+
 @keyframes pop-in {
   0% {
     transform: scale(0);
@@ -82,5 +86,17 @@
 
   40%, 60% {
     transform: translate3d(4px, 0, 0);
+  }
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2em);
+  }
+  100% {
+    transform: translateY(0);
   }
 }
