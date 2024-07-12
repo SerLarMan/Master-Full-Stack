@@ -3,9 +3,13 @@ import { words } from "../../data/words";
 
 import "./key.scss";
 
+let currentRow = 0; // Variable para mantener la fila actual
+
+// Función para configurar una tecla
 export function setUpKey(letter, icon) {
   const div = document.createElement("div");
   div.classList.add("key");
+  div.addEventListener("mouseup", handleKeyClick);
 
   const span = document.createElement("span");
   if (letter) {
@@ -16,121 +20,190 @@ export function setUpKey(letter, icon) {
     span.delete = true;
     div.style.width = "4em";
   }
-  span.clickable = true;
-  span.addEventListener("mouseup", clickKey);
 
   div.append(span);
   return div;
 }
 
-function clickKey(e) {
-  console.log(e)
-  if (e.currentTarget.clickable) {
-    const key = e.currentTarget;
+// Función para manejar el clic en una tecla
+function handleKeyClick(e) {
+  const key = e.currentTarget.children[0];
 
-    const tdList = document.querySelectorAll("td");
-    if (!key.delete) {
-      const tdEmpty = Array.from(tdList).find(
-        (td) => td.children[0].textContent == " "
-      );
-      if (tdEmpty) {
-        tdEmpty.children[0].textContent = key.textContent;
-        checkRowComplete(tdEmpty.parentElement);
-      }
-    } else {
-      const tdEmptyPos = Array.from(tdList).findIndex(
-        (td) => td.children[0].textContent == " "
-      );
-
-      const minor = Array.from(tdList)[tdEmptyPos - 1];
-
-      if (minor) {
-        minor.children[0].textContent = " ";
-      }
-    }
+  const tdList = document
+    .querySelectorAll("tr")
+    [currentRow].querySelectorAll("td");
+  if (!key.delete) {
+    handleLetterKey(key, tdList);
+  } else {
+    handleDeleteKey(tdList);
   }
 
   console.log(randomWord);
 }
 
+// Manejar una tecla de letra
+function handleLetterKey(key, tdList) {
+  const tdEmpty = Array.from(tdList).find(
+    (td) => td.children[0].textContent === " "
+  );
+  if (tdEmpty) {
+    tdEmpty.children[0].textContent = key.textContent;
+    tdEmpty.classList.add("pop-in"); // Añadir clase de animación
+
+    // Eliminar la clase de animación después de que termine para que se pueda reutilizar
+    setTimeout(() => {
+      tdEmpty.classList.remove("pop-in");
+    }, 300);
+
+    checkRowComplete(tdEmpty.parentElement);
+  }
+}
+
+// Manejar la tecla de eliminar
+function handleDeleteKey(tdList) {
+  const filledCells = Array.from(tdList).filter(
+    (td) => td.children[0].textContent !== " "
+  );
+
+  if (filledCells.length > 0) {
+    const lastFilled = filledCells[filledCells.length - 1];
+    lastFilled.children[0].textContent = " ";
+  }
+
+  const keys = document.querySelectorAll(".key");
+  keys.forEach((key) => {
+    key.addEventListener("mouseup", handleKeyClick);
+  });
+}
+
+// Modificar la función checkRowComplete para animar las celdas si la palabra no existe
 function checkRowComplete(tr) {
-  if (Array.from(tr.cells).every((td) => td.children[0].textContent != " ")) {
-    if (checkWordExists(tr)) {
-      checkCorrectLetters(tr);
-    } else {
-      const keys = document.querySelectorAll(".key");
-      keys.forEach((key) => {
-        if (!key.children[0].textContent) {
-          key.children[0].clickable = false;
-        }
+  if (Array.from(tr.cells).every((td) => td.children[0].textContent !== " ")) {
+    if (wordExists(tr)) {
+      // Añadir animación a cada td con un retraso
+      Array.from(tr.cells).forEach((td, index) => {
+        setTimeout(() => {
+          td.classList.add("scale-y");
+
+          // Aplicar los colores después de la animación
+          td.addEventListener(
+            "animationend",
+            function () {
+              td.classList.remove("scale-y");
+              checkCorrectLetters(td, index);
+            },
+            { once: true }
+          );
+        }, index * 100); // Retraso de 100ms entre cada td
       });
-      console.log("la palabra no existe");
+      currentRow++; // Mover a la siguiente fila solo si la palabra es válida
+    } else {
+      // Animación de sacudida si la palabra no existe
+      Array.from(tr.cells).forEach((td, index) => {
+        setTimeout(() => {
+          td.classList.add("shake");
+
+          // Remover la clase después de la animación
+          setTimeout(() => {
+            td.classList.remove("shake");
+          }, 600); // Duración de la animación en milisegundos
+        }, index * 100); // Retraso de 100ms entre cada td
+      });
+
+      disableAllKeysExceptDelete();
+      console.log("La palabra no existe");
     }
   }
 }
 
-function checkWordExists(tr) {
-  let actualWord = "";
-  Array.from(tr.cells).forEach((td) => {
-    actualWord += td.children[0].textContent.toLowerCase();
-  });
-
-  return words.find((word) => word == actualWord);
+// Verificar si una palabra existe en la lista
+function wordExists(tr) {
+  const actualWord = Array.from(tr.cells)
+    .map((td) => td.children[0].textContent.toLowerCase())
+    .join("");
+  return words.includes(actualWord);
 }
 
-function checkCorrectLetters(tr) {
+// Modificar checkCorrectLetters para permitir el índice
+function checkCorrectLetters(td, index) {
   const chars = [...randomWord];
   const keys = document.querySelectorAll(".key");
-  let key;
 
-  console.log(chars);
+  const keyChar = td.children[0].textContent;
+  const keyElement = Array.from(keys).find(
+    (key) => key.children[0].textContent === keyChar
+  );
 
-  Array.from(tr.cells).forEach((td) => {
-    if (td.children[0].textContent == chars[td.cellIndex]) {
-      td.classList.add("correct");
-      key = Array.from(keys).find(
-        (key) => key.children[0].textContent == td.children[0].textContent
-      );
-      key.classList.remove("badposition");
-      key.classList.add("correct");
-      key.style.color = "white";
-    } else if (chars.includes(td.children[0].textContent)) {
-      td.classList.add("badposition");
-      key = Array.from(keys).find(
-        (key) => key.children[0].textContent == td.children[0].textContent
-      );
-      key.classList.add("badposition");
-      key.style.color = "white";
-    } else {
-      td.classList.add("wrong");
-      key = Array.from(keys).find(
-        (key) => key.children[0].textContent == td.children[0].textContent
-      );
-      key.classList.add("wrong");
-      key.style.color = "white";
-    }
-    td.style.color = "white";
-    td.style.border = "0";
-  });
+  if (keyChar === chars[index]) {
+    setCorrect(td, keyElement);
+  } else if (chars.includes(keyChar)) {
+    setBadPosition(td, keyElement);
+  } else {
+    setWrong(td, keyElement);
+  }
 
-  if (Array.from(tr.cells).every((td) => td.classList.contains("correct"))) {
+  const tr = td.parentElement;
+  if (isRowCorrect(tr)) {
     winGame();
-  } else if (
-    tr.order == 5 &&
-    Array.from(tr.cells).some((td) => !td.classList.contains("correct"))
-  ) {
+  } else if (tr.rowIndex === 5) {
     endGame();
   }
 }
 
-function winGame() {
-  const keys = document.querySelectorAll(".key");
-  keys.forEach((key) => (key.clickable = false));
-  console.log("you won");
+// Marcar una celda y tecla como correcta
+function setCorrect(td, key) {
+  td.classList.add("correct");
+  td.style.color = "white";
+  key.classList.add("correct");
+  key.classList.remove("badposition", "wrong");
+  key.style.color = "white";
 }
 
-function endGame() {
+// Marcar una celda y tecla como en posición incorrecta
+function setBadPosition(td, key) {
+  td.classList.add("badposition");
+  td.style.color = "white";
+  key.classList.add("badposition");
+  key.style.color = "white";
+}
+
+// Marcar una celda y tecla como incorrecta
+function setWrong(td, key) {
+  td.classList.add("wrong");
+  td.style.color = "white";
+  key.classList.add("wrong");
+  key.style.color = "white";
+}
+
+// Verificar si todas las celdas de una fila son correctas
+function isRowCorrect(tr) {
+  return Array.from(tr.cells).every((td) => td.classList.contains("correct"));
+}
+
+// Deshabilitar todas las teclas excepto la de borrar
+function disableAllKeysExceptDelete() {
   const keys = document.querySelectorAll(".key");
-  keys.forEach((key) => (key.clickable = false));
-  console.log("you lose");
+  keys.forEach((key) => {
+    if (!key.children[0].delete) {
+      key.removeEventListener("mouseup", handleKeyClick);
+    }
+  });
+}
+
+// Deshabilitar todas las teclas
+function disableAllKeys() {
+  const keys = document.querySelectorAll(".key");
+  keys.forEach((key) => key.removeEventListener("mouseup", handleKeyClick));
+}
+
+// Función para manejar la victoria
+function winGame() {
+  disableAllKeys();
+  console.log("You won");
+}
+
+// Función para manejar el fin del juego
+function endGame() {
+  disableAllKeys();
+  console.log("You lose");
 }

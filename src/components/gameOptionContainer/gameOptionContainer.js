@@ -13,7 +13,7 @@ export function setUpGameOptionContainer(component) {
 
   const div = document.createElement("div");
   div.classList.add("gameOptionContainer");
-  div.append(setUpGameOption("", "Wordle"));
+  div.append(setUpGameOption("../../../resources/wordle.png", "Wordle"));
   div.append(setUpGameOption("../../../resources/buscaminas.png", "Busca Minas"));
   div.append(setUpGameOption("../../../resources/3raya.png", "3 en Raya"));
   section.append(div);
