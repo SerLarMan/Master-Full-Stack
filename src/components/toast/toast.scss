@@ -1,7 +1,6 @@
 .toast {
   visibility: hidden;
   min-width: 250px;
-  height: 50px;
   margin-left: -125px;
   background-color: #333;
   color: #fff;
@@ -11,7 +10,7 @@
   position: fixed;
   z-index: 1;
   left: 90%;
-  top: 0.5em;
+  top: 1em;
 
 }
 
@@ -22,22 +21,22 @@
 
 @keyframes fadein {
   from {
-    bottom: 0;
+    top: 0;
     opacity: 0;
   }
   to {
-    bottom: 30px;
+    top: 1em;
     opacity: 1;
   }
 }
 
 @keyframes fadeout {
   from {
-    bottom: 30px;
+    top: 1em;
     opacity: 1;
   }
   to {
-    bottom: 0;
+    top: 0;
     opacity: 0;
   }
 }

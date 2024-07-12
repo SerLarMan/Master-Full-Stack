@@ -3,6 +3,8 @@ import { setUpBuscaminas } from "../buscaminas/buscaminas";
 import { setUpTresraya } from "../tresraya/tresraya";
 import { setUpWordle } from "../wordle/wordle";
 import { setUpToast } from "../toast/toast";
+import { setUpButton } from "../button/button";
+import { resetCurrentRow } from "../wordleUtils/wordleUtils";
 
 import "./gameContainer.scss";
 
@@ -12,17 +14,23 @@ export function setUpGameContainer(component, name) {
   const titleSection = document.createElement("section");
   titleSection.classList.add("titleSection");
 
-  const goBack = document.createElement("span");
-  goBack.textContent = "Volver atrás";
-  goBack.classList.add("backButton");
-  goBack.addEventListener("click", () => {
-    setUpGameOptionContainer(component);
-  });
-  titleSection.append(goBack);
+  titleSection.append(
+    setUpButton("fas fa-arrow-left", "Atrás", () => {
+      setUpGameOptionContainer(component);
+    })
+  );
 
   const gameTitle = document.createElement("h2");
-  gameTitle.textContent = name;
+  gameTitle.textContent = name.toUpperCase();
   titleSection.append(gameTitle);
+
+  titleSection.append(
+    setUpButton("fas fa-repeat", "Volver a jugar", () => {
+      setUpGameContainer(component, name);
+    })
+  );
+
+  resetCurrentRow();
 
   const gameSection = document.createElement("section");
 
@@ -37,7 +45,7 @@ export function setUpGameContainer(component, name) {
       gameSection.append(setUpTresraya(10, 10));
   }
 
-  //component.append(titleSection);
+  component.append(titleSection);
   component.append(gameSection);
   component.append(setUpToast());
   return component;

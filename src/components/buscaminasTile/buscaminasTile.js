@@ -191,7 +191,7 @@ function winGame() {
     tiles.forEach((tile) => {
       tile.clickable = false;
     });
-    showToast("¡Enhorabuena, no has explotado!")
+    showToast("¡Enhorabuena, no has explotado! Has ganado 200 puntos.")
   }
 }
 

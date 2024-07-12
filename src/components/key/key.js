@@ -1,14 +1,8 @@
 import { showToast } from "../toast/toast";
 import { words } from "../../data/words";
+import { currentRow, plusCurrentRow } from "../wordleUtils/wordleUtils";
 
 import "./key.scss";
-
-// Variable para llevar el control de la fila actual
-let currentRow = 0;
-
-// La palabra aleatoria de cada partida
-const index = Math.floor(Math.random() * words.length);
-export const randomWord = words[index].toUpperCase();
 
 export function setUpKey(letter, icon) {
   const div = document.createElement("div");
@@ -45,6 +39,7 @@ function handleKeyClick(e) {
     handleDeleteKey(tdList);
   }
 
+  const randomWord = document.querySelector("table").randomWord;
   console.log(randomWord);
 }
 
@@ -102,7 +97,6 @@ function checkRowComplete(tr) {
   if (Array.from(tr.cells).every((td) => td.children[0].textContent !== " ")) {
     // Si la palabra existe
     if (wordExists(tr)) {
-
       // Se añade la animación a cada td
       Array.from(tr.cells).forEach((td, index) => {
         setTimeout(() => {
@@ -119,7 +113,7 @@ function checkRowComplete(tr) {
           );
         }, index * 100); // Retraso de la animación
       });
-      currentRow++;
+      plusCurrentRow()
     } else {
       // Se añade animación de sacudida si la palabra no existe
       Array.from(tr.cells).forEach((td, index) => {
@@ -141,7 +135,7 @@ function checkRowComplete(tr) {
 /**
  * Función que comprueba si la palabra existe
  * @param {*} tr fila de letras
- * @returns 
+ * @returns
  */
 function wordExists(tr) {
   const actualWord = Array.from(tr.cells)
@@ -153,9 +147,10 @@ function wordExists(tr) {
 /**
  * Función que comrpueba si cada letra introducida está en la palabra a acertar
  * @param {*} td casilla de la fila
- * @param {*} index 
+ * @param {*} index
  */
 function checkCorrectLetters(td, index) {
+  const randomWord = document.querySelector("table").randomWord;
   const chars = [...randomWord];
   const keys = document.querySelectorAll(".key");
 
@@ -221,8 +216,8 @@ function setWrong(td, key) {
 
 /**
  * Función que comprueba si todas las letras de una fila son correctas
- * @param {*} tr 
- * @returns 
+ * @param {*} tr
+ * @returns
  */
 function isRowCorrect(tr) {
   return Array.from(tr.cells).every((td) => td.classList.contains("correct"));
@@ -267,7 +262,8 @@ function winGame(tr) {
       );
     }, index * 100);
   });
-  showToast("¡Enhorabuena, has acertado!");
+
+  showToast("¡Enhorabuena, has acertado! Has ganado 100 puntos.");
 }
 
 /**

@@ -1,17 +1,9 @@
 import { setUpBuscaminasTile } from "../buscaminasTile/buscaminasTile";
-import { setUpGameContainer } from "../gameContainer/gameContainer";
 
 import "./buscaminas.scss";
 
 export function setUpBuscaminas(width, height, minesNumber) {
   const div = document.createElement("div");
-
-  const button = document.createElement("button");
-  button.textContent = "Reset";
-  button.addEventListener("click", () => {
-    const main = document.querySelector("main");
-    setUpGameContainer(main, "Busca Minas");
-  });
 
   const board = document.createElement("div");
   board.classList.add("board");
@@ -20,7 +12,6 @@ export function setUpBuscaminas(width, height, minesNumber) {
 
   createBoard(width, height, board);
 
-  div.append(button);
   div.append(board);
   return div;
 }

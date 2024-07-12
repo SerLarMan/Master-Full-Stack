@@ -1,23 +1,30 @@
 import { setUpKey } from "../key/key";
 import { keys } from "../../data/keys";
+import { words } from "../../data/words";
 
 import "./wordle.scss";
 
 export function setUpWordle() {
   const div = document.createElement("div");
 
-  div.append(createTable());
+  // La palabra aleatoria de cada partida
+  const index = Math.floor(Math.random() * words.length);
+  const randomWord = words[index].toUpperCase();
+  console.log(randomWord)
+
+  div.append(createTable(randomWord));
   div.append(createKeyBoard());
   return div;
 }
 
 /**
  * Función que crea la tabla para introducir las letras
- * @returns 
+ * @returns
  */
-function createTable() {
+function createTable(randomWord) {
   const article = document.createElement("article");
   const table = document.createElement("table");
+  table.randomWord = randomWord;
 
   for (let i = 0; i < 6; i++) {
     const tr = document.createElement("tr");
@@ -39,7 +46,7 @@ function createTable() {
 
 /**
  * Función que crea el teclado con las letras
- * @returns 
+ * @returns
  */
 function createKeyBoard() {
   const article = document.createElement("article");
