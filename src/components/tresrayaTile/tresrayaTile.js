@@ -9,66 +9,79 @@ export function setUpTresrayaTile(tile) {
   tileDiv.y = tile.y;
   tileDiv.classList.add("tile");
   tileDiv.clickable = true;
-  tileDiv.addEventListener("mouseup", clickTile);
+  tileDiv.addEventListener("mouseup", handleTileClick);
 
   return tileDiv;
 }
 
-function clickTile(e) {
-  const tile = getTileFromEvent(e);
+function handleTileClick(e) {
+  const tile = e.currentTarget;
   if (tile && tile.clickable) {
-    handleTileClick(tile);
-  }
-}
-
-function getTileFromEvent(e) {
-  const tiles = document.querySelectorAll(".tile");
-  return Array.from(tiles).find(
-    (t) => t.x === e.currentTarget.x && t.y === e.currentTarget.y
-  );
-}
-
-function handleTileClick(tile) {
-  tile.textContent = turn.value;
-  tile.clickable = false;
-
-  const tiles = Array.from(document.querySelectorAll(".tile"));
-
-  const victory = winGame(tile, tiles);
-
-  console.log(victory);
-
-  if (!victory) {
-    if (tiles.every((tile) => tile.textContent)) {
+    updateTile(tile);
+    const tiles = getAllTiles();
+    if (winGame(tile, tiles)) {
+      disableAllTiles(tiles);
+      showToast(
+        `¡Enhorabuena, el jugador ${turn.player} ha hecho tres en raya! Ha ganado 300 puntos.`
+      );
+    } else if (isBoardFull(tiles)) {
       endGame();
     } else {
       nextTurn();
     }
-  } else {
-    tiles.forEach((tile) => (tile.clickable = false));
   }
 }
 
+function getAllTiles() {
+  return Array.from(document.querySelectorAll(".tile"));
+}
+
+function updateTile(tile) {
+  tile.textContent = turn.value;
+  tile.clickable = false;
+}
+
 function winGame(currTile, tiles) {
-  const tilesX = tiles.filter((tile) => tile.x == currTile.x);
-  const tilesY = tiles.filter((tile) => tile.y == currTile.y);
+  return (
+    checkLineVictory(currTile, tiles, "x") ||
+    checkLineVictory(currTile, tiles, "y") ||
+    checkDiagonalVictory(currTile, tiles)
+  );
+}
 
-  console.log(currTile);
-  console.log(tilesX);
-  console.log(tilesY);
+function checkLineVictory(currTile, tiles, axis) {
+  const tilesInLine = tiles.filter((tile) => tile[axis] == currTile[axis]);
+  return tilesInLine.every((tile) => tile.textContent == currTile.textContent);
+}
 
-  if (
-    tilesX.every((tile) => tile.textContent == currTile.textContent) ||
-    tilesY.every((tile) => tile.textContent == currTile.textContent)
-  ) {
-    showToast(
-      `¡Enhorabuena, el jugador ${turn.player} ha hecho tres en raya! Ha ganado 300 puntos.`
+function checkDiagonalVictory(currTile, tiles) {
+  const isMainDiagonal = currTile.x === currTile.y;
+  const isReversedDiagonal = currTile.x + currTile.y === 2;
+
+  const mainDiagonalTiles = tiles.filter((tile) => tile.x === tile.y);
+  const reversedDiagonalTiles = tiles.filter((tile) => tile.x + tile.y === 2);
+
+  const mainDiagonalVictory =
+    isMainDiagonal &&
+    mainDiagonalTiles.every(
+      (tile) => tile.textContent === currTile.textContent
     );
 
-    return true;
-  }
+  const reversedDiagonalVictory =
+    isReversedDiagonal &&
+    reversedDiagonalTiles.every(
+      (tile) => tile.textContent === currTile.textContent
+    );
 
-  return false;
+  return mainDiagonalVictory || reversedDiagonalVictory;
+}
+
+function disableAllTiles(tiles) {
+  tiles.forEach((tile) => (tile.clickable = false));
+}
+
+function isBoardFull(tiles) {
+  return tiles.every((tile) => tile.textContent);
 }
 
 function endGame() {
