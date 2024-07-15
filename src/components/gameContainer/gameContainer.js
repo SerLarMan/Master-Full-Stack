@@ -42,10 +42,10 @@ export function setUpGameContainer(component, name) {
       gameSection.append(setUpBuscaminas(8, 8, 10));
       break;
     case "3 en Raya":
-      gameSection.append(setUpTresraya(10, 10));
+      gameSection.append(setUpTresraya());
   }
 
-  component.append(titleSection);
+  //component.append(titleSection);
   component.append(gameSection);
   component.append(setUpToast());
   return component;

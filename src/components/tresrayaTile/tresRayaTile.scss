@@ -1,0 +1,17 @@
+.tile {
+  width: 5em;
+  height: 5em;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  span {
+    position: absolute;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
