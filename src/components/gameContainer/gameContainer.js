@@ -4,49 +4,67 @@ import { setUpTresraya } from "../tresraya/tresraya";
 import { setUpWordle } from "../wordle/wordle";
 import { setUpToast } from "../toast/toast";
 import { setUpButton } from "../button/button";
-import { resetCurrentRow } from "../wordleUtils/wordleUtils";
+import { resetCurrentRow } from "../../utils/wordleUtils";
+import { resetTurn } from "../../utils/tresrayaUtils";
+import { resetOptions } from "../../utils/buscaminasUtils";
 
+import "../../styles/global.scss";
 import "./gameContainer.scss";
 
 export function setUpGameContainer(component, name) {
   component.textContent = "";
 
-  const titleSection = document.createElement("section");
-  titleSection.classList.add("titleSection");
+  const section = document.createElement("section");
 
-  titleSection.append(
+  const h2 = document.createElement("h2");
+  h2.textContent = name.toUpperCase();
+  section.append(h2);
+
+  const buttonArticle = document.createElement("article");
+  buttonArticle.classList.add("buttonArticle");
+
+  const buttonArticleh3 = document.createElement("h3");
+  buttonArticleh3.classList.add("none");
+  buttonArticle.append(buttonArticleh3);
+
+  buttonArticle.append(
     setUpButton("fas fa-arrow-left", "Atrás", () => {
       setUpGameOptionContainer(component);
     })
   );
 
-  const gameTitle = document.createElement("h2");
-  gameTitle.textContent = name.toUpperCase();
-  titleSection.append(gameTitle);
-
-  titleSection.append(
+  buttonArticle.append(
     setUpButton("fas fa-repeat", "Volver a jugar", () => {
       setUpGameContainer(component, name);
     })
   );
 
-  resetCurrentRow();
+  section.append(buttonArticle);
 
-  const gameSection = document.createElement("section");
+  resetCurrentRow();
+  resetTurn();
+  resetOptions();
+
+  const gameArticle = document.createElement("article");
+  gameArticle.classList.add("gameArticle");
+
+  const gameArticleh3 = document.createElement("h3");
+  gameArticleh3.classList.add("none");
+  gameArticle.append(gameArticleh3);
 
   switch (name) {
     case "Wordle":
-      gameSection.append(setUpWordle());
+      gameArticle.append(setUpWordle());
       break;
     case "Busca Minas":
-      gameSection.append(setUpBuscaminas(8, 8, 10));
+      gameArticle.append(setUpBuscaminas());
       break;
     case "3 en Raya":
-      gameSection.append(setUpTresraya());
+      gameArticle.append(setUpTresraya());
   }
 
-  //component.append(titleSection);
-  component.append(gameSection);
+  section.append(gameArticle);
+  component.append(section);
   component.append(setUpToast());
   return component;
 }

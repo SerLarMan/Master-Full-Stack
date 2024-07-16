@@ -1,17 +1,59 @@
-.tile {
-  width: 5em;
-  height: 5em;
-  border: 1px solid black;
+.square {
+  width: 10em;
+  height: 10em;
+  border: 2px solid black;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-
+  transition: transform 0.2s ease;
+  background-color: white;
+  
   span {
-    position: absolute;
+    font-family: 'Fredoka One', sans-serif;
+    font-size: 4em;
   }
 
   &:hover {
     cursor: pointer;
+    transform: scale(1.05);
+    z-index: 10;
   }
 }
+
+.no-hover {
+  pointer-events: none;
+  transform: scale(1);
+}
+
+.clicked-square {
+  animation: clickAnimation 0.3s forwards;
+}
+
+.winning-square {
+  background-color: yellow;
+  border: 3px solid red;
+  animation: highlight 1s infinite alternate;
+}
+
+@keyframes highlight {
+  from {
+    background-color: yellow;
+  }
+  to {
+    background-color: orange;
+  }
+}
+
+@keyframes clickAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+

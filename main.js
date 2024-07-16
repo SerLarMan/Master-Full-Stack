@@ -3,6 +3,10 @@ import { setUpHeader } from "./src/components/header/header";
 
 import "./src/styles/global.scss";
 
+if (!localStorage.points) {
+  localStorage.points = 0;
+}
+
 const app = document.querySelector("#app");
 
 const header = document.createElement("header");

@@ -1,17 +1,31 @@
 import { setUpBuscaminasTile } from "../buscaminasTile/buscaminasTile";
+import { options } from "../../utils/buscaminasUtils";
 
 import "./buscaminas.scss";
 
-export function setUpBuscaminas(width, height, minesNumber) {
+export function setUpBuscaminas() {
   const div = document.createElement("div");
+
+  // El div con la información sobre las banderas que quedan
+  const minesCounter = document.createElement("div");
+  minesCounter.classList.add("minesCounter");
+
+  const flagSpan = document.createElement("span");
+  flagSpan.textContent = "🚩";
+
+  const flagCounter = document.createElement("span");
+  flagCounter.textContent = options.mines;
+  flagCounter.classList.add("flagCounter");
+
+  minesCounter.append(flagSpan);
+  minesCounter.append(flagCounter);
 
   const board = document.createElement("div");
   board.classList.add("board");
-  board.flags = minesNumber;
-  board.mines = minesNumber;
 
-  createBoard(width, height, board);
+  createBoard(options.boardWidth, options.boardHeight, board);
 
+  div.append(minesCounter);
   div.append(board);
   return div;
 }
@@ -24,7 +38,7 @@ export function setUpBuscaminas(width, height, minesNumber) {
  */
 function createBoard(width, height, board) {
   let tiles = [];
-  let mines = createMines(width, height, board.mines);
+  let mines = createMines(width, height, options.mines);
 
   // Se rellena el tablero dependiendo de las coordenadas donde se han generado las minas
   for (let i = 0; i < height; i++) {
@@ -45,8 +59,8 @@ function createBoard(width, height, board) {
 
 /**
  * Función que dibuja el tablero
- * @param {*} tiles 
- * @param {*} board 
+ * @param {*} tiles las casillas del tablero
+ * @param {*} board el elemento tablero
  */
 function drawBoard(tiles, board) {
   for (let tileRow of tiles) {

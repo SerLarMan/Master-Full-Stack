@@ -1,6 +1,7 @@
 import { showToast } from "../toast/toast";
 import { words } from "../../data/words";
-import { currentRow, plusCurrentRow } from "../wordleUtils/wordleUtils";
+import { currentRow, plusCurrentRow } from "../../utils/wordleUtils";
+import { addPoints } from "../../utils/windowUtils";
 
 import "./key.scss";
 
@@ -113,7 +114,7 @@ function checkRowComplete(tr) {
           );
         }, index * 100); // Retraso de la animación
       });
-      plusCurrentRow()
+      plusCurrentRow();
     } else {
       // Se añade animación de sacudida si la palabra no existe
       Array.from(tr.cells).forEach((td, index) => {
@@ -264,6 +265,8 @@ function winGame(tr) {
   });
 
   showToast("¡Enhorabuena, has acertado! Has ganado 100 puntos.");
+
+  addPoints(100);
 }
 
 /**

@@ -1,4 +1,6 @@
 import { showToast } from "../toast/toast";
+import { addPoints } from "../../utils/windowUtils";
+import { markMine, unMarkMine, options } from "../../utils/buscaminasUtils";
 
 import "./buscaminasTile.scss";
 
@@ -6,14 +8,15 @@ export function setUpBuscaminasTile(tile) {
   const tileDiv = document.createElement("div");
   tileDiv.x = tile.x;
   tileDiv.y = tile.y;
-  tileDiv.classList.add("tile", "normal");
   tileDiv.processed = false;
   tileDiv.withFlag = false;
   tileDiv.clickable = true;
+  tileDiv.classList.add("tile", "normal");
   tileDiv.addEventListener("mouseup", clickTile);
 
   const span = document.createElement("span");
   span.textContent = tile.value;
+  span.style.color = chooseColor(tile.value);
   span.classList.add("hidden");
   tileDiv.append(span);
 
@@ -62,13 +65,13 @@ function handleTileClick(e, tile) {
  */
 function handleLeftClick(tile) {
   if (!tile.withFlag) {
+    showTile(tile);
     if (tile.firstChild.textContent === "💣") {
-      tile.classList.remove("normal");
-      tile.classList.add("wrong");
+      tile.classList.remove("clicked");
+      tile.classList.add("mine");
       tile.firstChild.classList.remove("hidden");
-      endGame();
+      endGame(tile);
     } else {
-      showTile(tile);
       checkEmpty(tile);
       winGame();
     }
@@ -81,17 +84,17 @@ function handleLeftClick(tile) {
  */
 function handleRightClick(tile) {
   window.addEventListener("contextmenu", (e) => e.preventDefault());
-  const board = document.querySelector(".board");
 
   if (!tile.classList.contains("clicked")) {
-    if (tile.withFlag) {
-      removeFlag(tile, board);
-    } else {
-      addFlag(tile, board);
+    if (tile.withFlag && options.mines < 10) {
+      removeFlag(tile);
+    } else if (!tile.withFlag && options.mines > 0) {
+      addFlag(tile);
     }
-  }
 
-  console.log(board.flags);
+    const flagCounterSpan = document.querySelector(".flagCounter");
+    flagCounterSpan.textContent = options.mines;
+  }
 }
 
 /**
@@ -99,9 +102,9 @@ function handleRightClick(tile) {
  * @param {*} tile la casilla clickada
  * @param {*} board el elemento tablero
  */
-function removeFlag(tile, board) {
+function removeFlag(tile) {
   tile.withFlag = false;
-  board.flags += 1;
+  unMarkMine();
   tile.removeChild(tile.lastElementChild);
 }
 
@@ -110,9 +113,9 @@ function removeFlag(tile, board) {
  * @param {*} tile la casilla clickada
  * @param {*} board el elemento tablero
  */
-function addFlag(tile, board) {
+function addFlag(tile) {
   tile.withFlag = true;
-  board.flags -= 1;
+  markMine();
 
   const span = document.createElement("span");
   span.textContent = "🚩";
@@ -166,7 +169,7 @@ function showTile(tile) {
     !tile.classList.contains("wrong")
   ) {
     tile.classList.remove("normal");
-    tile.classList.add("clicked");
+    tile.classList.add("clicked", "no-hover");
     tile.firstChild.classList.remove("hidden");
   }
 }
@@ -182,6 +185,34 @@ function checkEmpty(tile) {
 }
 
 /**
+ * Función que le da color a los números que rodean las bombas
+ * @param {*} value el número de la casilla
+ * @returns
+ */
+function chooseColor(value) {
+  switch (value) {
+    case "1":
+      return "blue";
+    case "2":
+      return "green";
+    case "3":
+      return "red";
+    case "4":
+      return "darkblue";
+    case "5":
+      return "brown";
+    case "6":
+      return "turquoise";
+    case "7":
+      return "black";
+    case "8":
+      return "grey";
+    default:
+      return "";
+  }
+}
+
+/**
  * Función que se encarga de la condición de victoria en el juego
  */
 function winGame() {
@@ -191,28 +222,30 @@ function winGame() {
     tiles.forEach((tile) => {
       tile.clickable = false;
     });
-    showToast("¡Enhorabuena, no has explotado! Has ganado 200 puntos.")
+    showToast("¡Enhorabuena, no has explotado! Has ganado 200 puntos.");
+
+    addPoints(200);
   }
 }
 
 /**
  * Función que se encarga de la condición de derrota en el juego
  */
-function endGame() {
+function endGame(clickedTile) {
   const tiles = document.querySelectorAll(".tile");
   tiles.forEach((tile) => {
     tile.clickable = false;
     if (tile.firstChild.textContent === "💣") {
-      if (tile.lastChild.textContent !== "🚩") {
+      if (tile.lastChild.textContent !== "🚩" && tile !== clickedTile) {
         showTile(tile);
       }
     } else if (tile.withFlag) {
       const span = document.createElement("span");
       span.textContent = "X";
       span.style.zIndex = "2";
-      span.style.fontSize = "2em";
+      span.style.fontSize = "5rem";
       tile.append(span);
     }
   });
-  showToast("¡Has explotado!")
+  showToast("¡Has explotado!");
 }
