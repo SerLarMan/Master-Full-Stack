@@ -7,7 +7,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  
+
   span {
     position: absolute;
     font-size: 3rem;
@@ -42,4 +42,15 @@
 
 .hidden {
   display: none;
+}
+
+@media (max-width: 600px) {
+  .tile {
+    width: 2.5em;
+    height: 2.5em;
+
+    span {
+      font-size: 1.5rem;
+    }
+  }
 }
