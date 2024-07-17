@@ -94,29 +94,37 @@ export function setUpCardContainer(query, type) {
   const main = document.querySelector("main");
   main.textContent = "";
 
+  const container = document.createElement("section");
+  container.classList.add("container");
+
   // Query a la API de unsplash
   const images = [];
   getImages(query, type).then((imagesPromise) => {
-    imagesPromise.results.forEach((res) => images.push(res));
+    if (imagesPromise.results.length == 0) {
+      const h2 = document.createElement("h2");
+      h2.textContent =
+        "Parece que tu búsqueda no ha tenido muchos resultado. Prueba con otra cosa.";
 
-    const columnsCount = 7;
-    const imageColumns = generateImageColumns(images, columnsCount, type);
+      container.append(h2);
+    } else {
+      imagesPromise.results.forEach((res) => images.push(res));
 
-    const container = document.createElement("section");
-    container.classList.add("container");
+      const columnsCount = 7;
+      const imageColumns = generateImageColumns(images, columnsCount, type);
 
-    const h2 = document.createElement("h2");
-    type == "photos"
-      ? (h2.textContent = "Disfruta de nuestras imagenes")
-      : (h2.textContent = "Explora nuestra variedad de colecciones");
-    container.append(h2);
+      const h2 = document.createElement("h2");
+      type == "photos"
+        ? (h2.textContent = "Disfruta de nuestras imagenes")
+        : (h2.textContent = "Explora nuestra variedad de colecciones");
+      container.append(h2);
 
-    const div = document.createElement("div");
-    div.classList.add("colContainer");
-    imageColumns.forEach((col) => {
-      div.append(renderColumn(col, type, images));
-    });
-    container.append(div);
+      const div = document.createElement("div");
+      div.classList.add("colContainer");
+      imageColumns.forEach((col) => {
+        div.append(renderColumn(col, type, images));
+      });
+      container.append(div);
+    }
 
     main.append(container);
   });
@@ -126,27 +134,35 @@ export function setUpCardContainerByCollection(id) {
   const main = document.querySelector("main");
   main.textContent = "";
 
+  const container = document.createElement("section");
+  container.classList.add("container");
+
   // Query a la API de unsplash
   const images = [];
   getCollectionImages(id).then((imagesPromise) => {
-    imagesPromise.forEach((res) => images.push(res));
+    if (imagesPromise.results.length == 0) {
+      const h2 = document.createElement("h2");
+      h2.textContent =
+        "Parece que tu búsqueda no ha tenido muchos resultado. Prueba con otra cosa.";
 
-    const columnsCount = 7;
-    const imageColumns = generateImageColumns(images, columnsCount, "photos");
+      container.append(h2);
+    } else {
+      imagesPromise.forEach((res) => images.push(res));
 
-    const container = document.createElement("section");
-    container.classList.add("container");
+      const columnsCount = 7;
+      const imageColumns = generateImageColumns(images, columnsCount, "photos");
 
-    const h2 = document.createElement("h2");
-    h2.textContent = "Disfruta de las imagenes de la colección";
-    container.append(h2);
+      const h2 = document.createElement("h2");
+      h2.textContent = "Disfruta de las imagenes de la colección";
+      container.append(h2);
 
-    const div = document.createElement("div");
-    div.classList.add("colContainer");
-    imageColumns.forEach((col) => {
-      div.append(renderColumn(col, "photos"));
-    });
-    container.append(div);
+      const div = document.createElement("div");
+      div.classList.add("colContainer");
+      imageColumns.forEach((col) => {
+        div.append(renderColumn(col, "photos"));
+      });
+      container.append(div);
+    }
 
     main.append(container);
   });
