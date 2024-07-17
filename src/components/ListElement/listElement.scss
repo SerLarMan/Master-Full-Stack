@@ -1,0 +1,16 @@
+@import "../../styles/global.scss";
+
+li {
+  margin: 0 0.5em;
+  padding-bottom: 0.5em;
+  border-bottom: 3px solid map-get($colors, "accent");
+  a {
+    color: map-get($colors, "secondary");
+    text-decoration: none;
+  }
+
+  &:hover {
+    border-color: map-get($colors, "secondary");
+    cursor: pointer;
+  }
+}

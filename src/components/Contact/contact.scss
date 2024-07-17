@@ -1,0 +1,20 @@
+.contact {
+  flex-direction: row;
+  margin-bottom: 0;
+
+  article {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .formArticle {
+    display: flex;
+    flex-direction: column;
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

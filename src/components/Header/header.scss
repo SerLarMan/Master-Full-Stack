@@ -1,0 +1,14 @@
+@import "../../styles/global.scss";
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4em;
+  background-color: map-get($colors, "accent");
+
+  ul {
+    display: flex;
+    list-style-type: none;
+  }
+}

@@ -1,27 +1,36 @@
-@font-face {
-  font-family: "Helvetica Now Text Medium";
-  src: url("../resources/fonts/HelveticaNowText-Medium.ttf");
-}
-
 /**
- * #3E4E50
- * #FACFAD
- * #F8BD7F
- * #F5AC72
- * #F2AA7E
+ * #274060
+ * #335C81
+ * #65AFFF
+ * #1B2845
+ * #5899E2
  */
 
-
 $colors: (
-  "primary": #111111,
+  "primary": #1b2845,
   "secondary": #f5f5f5,
-  "accent": #7e7e7e,
+  "accent": #335C81,
 );
 
-$font: "Helvetica Now Text Medium";
+$sizes: (
+  "big": 10px,
+  "medium": 10px,
+  "small": 10px,
+);
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2em 0;
+}
+
+.hidden {
+  display: none;
 }
