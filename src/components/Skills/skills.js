@@ -1,5 +1,5 @@
 import { setUpSoftSkillInfo } from "../SoftSkillInfo/softSkillInfo";
-import { setUpTootlTip } from "../Tooltip/tooltip";
+import { setUpToolTip } from "../Tooltip/tooltip";
 
 import "./skills.scss";
 import "../../styles/global.scss";
@@ -10,8 +10,6 @@ export function setUpSkills() {
 
   const sectionTitle = document.createElement("h2");
   sectionTitle.textContent = "Skills";
-  sectionTitle.classList.add("tooltipContainer");
-  sectionTitle.append(setUpTootlTip("Prueba tooltip"));
   skills.append(sectionTitle);
 
   const techSkills = document.createElement("article");

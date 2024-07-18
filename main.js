@@ -1,4 +1,5 @@
 import { setUpHeader } from "./src/components/Header/header";
+import { setUpNav } from "./src/components/Nav/nav";
 import { setUpMain } from "./src/components/Main/main";
 import { setUpFooter } from "./src/components/Footer/footer";
 
@@ -7,14 +8,19 @@ import "./src/styles/global.scss";
 const app = document.querySelector("#app");
 
 const header = document.createElement("header");
+const nav = document.createElement("nav")
 const main = document.createElement("main");
 const footer = document.createElement("footer");
 
-app.append(setUpHeader(header));
-app.append(setUpMain(main));
-app.append(setUpFooter(footer));
+app.append(setUpNav(nav))
 
-const words = ["Frontend", "Backend"];
+const div = document.createElement("div")
+div.append(setUpHeader(header));
+div.append(setUpMain(main))
+div.append(setUpFooter(footer))
+app.append(div);
+
+const words = ["Front-End", "Back-End"];
 let currentWordIndex = 0;
 let currentCharIndex = 0;
 let isDeleting = false;

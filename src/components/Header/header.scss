@@ -1,14 +1,31 @@
 @import "../../styles/global.scss";
 
 header {
+  height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 4em;
-  background-color: map-get($colors, "accent");
+  
+  .cursor {
+    font-weight: bold;
+  }
 
-  ul {
-    display: flex;
-    list-style-type: none;
+  img {
+    width: 350px;
+    border-radius: 100%;
+  }
+}
+
+.blink {
+  animation: blink 1s infinite ease-in-out;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
   }
 }

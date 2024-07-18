@@ -1,4 +1,3 @@
-import { setUpPresentation } from "../Presentation/presentation";
 import { setUpSkills } from "../Skills/skills";
 import { setUpExperience } from "../Experience/experience";
 import { setUpProjects } from "../Projects/projects";
@@ -8,7 +7,6 @@ import "./main.scss";
 import "../../styles/global.scss";
 
 export function setUpMain(component) {
-  component.append(setUpPresentation());
   component.append(setUpSkills());
   component.append(setUpExperience());
   component.append(setUpProjects());
