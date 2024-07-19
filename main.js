@@ -56,6 +56,6 @@ function type() {
   }
 }
 
-/* document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     setTimeout(type, typingSpeed);
-}); */
+});
