@@ -21,6 +21,6 @@
   }
 
   &:hover i {
-    color: map-get($colors, "contrast");
+    color: map-get($colors, "secondary");
   }
 }
