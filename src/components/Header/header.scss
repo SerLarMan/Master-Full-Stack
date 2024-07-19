@@ -4,14 +4,52 @@ header {
   height: 100vh;
   display: flex;
   align-items: center;
-  
-  .cursor {
-    font-weight: bold;
+
+  & > div {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .headerLink {
+    position: absolute;
+    top: 0;
+  }
+
+  .presentationDiv {
+    max-width: 600px;
+    height: 15em;
+    align-items: start;
+    justify-content: space-between;
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 500;
+    }
+
+    .cursor {
+      font-weight: bold;
+    }
+
+    .socials {
+      display: flex;
+
+      & div:last-child {
+        margin-left: 1em;
+      }
+    }
+
+    .remark {
+      color: map-get($colors, "accentLight");
+      font-weight: bold;
+    }
   }
 
   img {
     width: 350px;
     border-radius: 100%;
+    filter: drop-shadow(15px 10px 4px rgba(0, 0, 0, 0.24));
   }
 }
 

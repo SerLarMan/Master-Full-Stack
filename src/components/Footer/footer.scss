@@ -1,7 +1,14 @@
 @import "../../styles/global.scss";
 
 footer {
-  height: 5em;
+  width: calc(100vw - 7.5em);
+  height: 3em;
+  position: absolute;
+  margin-left: 6em;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: map-get($colors, "secondary");
-  background-color: map-get($colors, "primary");
+  background-color: map-get($colors, "accentDark");
 }

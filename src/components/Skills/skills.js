@@ -1,5 +1,5 @@
 import { setUpSoftSkillInfo } from "../SoftSkillInfo/softSkillInfo";
-import { setUpToolTip } from "../Tooltip/tooltip";
+import { setUpTechSkillCard } from "../TechSkillCard/techSkillCard";
 
 import "./skills.scss";
 import "../../styles/global.scss";
@@ -8,8 +8,18 @@ export function setUpSkills() {
   const skills = document.createElement("section");
   skills.classList.add("skills");
 
-  const sectionTitle = document.createElement("h2");
-  sectionTitle.textContent = "Skills";
+  const sectionTitle = document.createElement("div");
+  sectionTitle.classList.add("sectionTitle");
+
+  const h2 = document.createElement("h2");
+  h2.textContent = "SKILLS";
+  h2.id = "skills";
+
+  const line = document.createElement("div");
+  line.classList.add("line");
+
+  sectionTitle.append(h2);
+  sectionTitle.append(line);
   skills.append(sectionTitle);
 
   const techSkills = document.createElement("article");
@@ -18,6 +28,26 @@ export function setUpSkills() {
   techTitle.textContent = "Technical skills";
   techSkills.append(techTitle);
 
+  const techContainer = document.createElement("div");
+  techContainer.classList.add("techContainer");
+
+  techContainer.append(setUpTechSkillCard("fa-brands fa-react", "React"));
+  techContainer.append(setUpTechSkillCard("fa-brands fa-angular", "Angular"));
+  techContainer.append(setUpTechSkillCard("fa-brands fa-node-js", "Node JS"));
+  techContainer.append(setUpTechSkillCard("fa-brands fa-sass", "Sass"));
+  techContainer.append(setUpTechSkillCard("icon-spring", "Spring"));
+  techContainer.append(setUpTechSkillCard("fa-brands fa-gitlab", "GitLab"));
+  techContainer.append(setUpTechSkillCard("fa-brands fa-github", "GitHub"));
+  techContainer.append(setUpTechSkillCard("fa-brands fa-docker", "Docker"));
+  techContainer.append(setUpTechSkillCard("icon-mysql", "MySQL"));
+  techContainer.append(setUpTechSkillCard("icon-mongodb", "MongoDB"));
+  techContainer.append(
+    setUpTechSkillCard("fa-brands fa-confluence", "Confluence")
+  );
+  techContainer.append(setUpTechSkillCard("fa-brands fa-jira", "Jira"));
+
+  techSkills.append(techContainer);
+
   const softSkills = document.createElement("article");
 
   const softTitle = document.createElement("h3");
@@ -25,7 +55,7 @@ export function setUpSkills() {
   softSkills.append(softTitle);
 
   const softSkillsInfo = document.createElement("div");
-  softSkillsInfo.classList.add("softSkillsInfo");
+  softSkillsInfo.classList.add("softSkillsContainer");
 
   softSkillsInfo.append(
     setUpSoftSkillInfo(

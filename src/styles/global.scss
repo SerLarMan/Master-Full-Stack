@@ -7,9 +7,11 @@
  */
 
 $colors: (
-  "primary": #1b2845,
+  "primary": #335c81,
   "secondary": #fbfbf9,
-  "accent": #335c81,
+  "accentDark": #1b2845,
+  "accentLight": #5899e2,
+  "black": #1b1212,
 );
 
 $sizes: (
@@ -29,13 +31,20 @@ $sizes: (
   display: flex;
 
   & > div {
-    margin-left: 6em;
-    width: 100vw;
+    margin-left: 12em;
+    margin-right: 6em;
+    width: 100%;
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
+  color: map-get($colors, "black");
   background-color: map-get($colors, "secondary");
+  font-family: "Rubik", sans-serif;
 }
 
 main {
@@ -46,8 +55,23 @@ main {
   section {
     display: flex;
     flex-direction: column;
-    align-items: center;
     margin-bottom: 2em;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+
+  .line {
+    width: 100px;
+    height: 2px;
+    margin-left: 1.5em;
+    background: map-get($colors, "black");
   }
 }
 

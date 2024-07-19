@@ -1,5 +1,14 @@
+@import "../../styles/global.scss";
+
 .skillContainer {
+    width: 15em;
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
+
+    i {
+        font-size: 1.5rem;
+        color: map-get($colors, "primary");
+    }
 }

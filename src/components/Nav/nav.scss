@@ -4,7 +4,7 @@ nav {
     width: 6em;
     height: 100vh;
     position: fixed;
-    background-color: map-get($colors, "accent");
+    background-color: map-get($colors, "primary");
   
     ul {
       margin-top: 30vh;

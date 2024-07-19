@@ -1,9 +1,10 @@
 import "./listElement.scss";
 import "../../styles/global.scss";
 
-export function setUpListElement(icon, text) {
+export function setUpListElement(icon, text, href) {
   const li = document.createElement("li");
-  const div = document.createElement("div");
+  const a = document.createElement("a");
+  a.href = href;
 
   const i = document.createElement("i");
   i.className = icon;
@@ -12,8 +13,8 @@ export function setUpListElement(icon, text) {
   span.textContent = text;
   span.classList.add("hidden");
 
-  div.append(i);
-  div.append(span);
-  li.append(div);
+  a.append(i);
+  a.append(span);
+  li.append(a);
   return li;
 }

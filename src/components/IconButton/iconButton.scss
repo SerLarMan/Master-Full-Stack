@@ -1,0 +1,26 @@
+@import "../../styles/global.scss";
+
+.iconButton {
+  width: 2.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5em;
+  border-radius: 100%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: 0.2s ease-in-out;
+
+  i {
+    font-size: 1.5rem;
+    color: map-get($colors, "primary");
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: map-get($colors, "primary");
+  }
+
+  &:hover i {
+    color: map-get($colors, "contrast");
+  }
+}
