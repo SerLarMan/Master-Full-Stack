@@ -1,9 +1,8 @@
 @import "../../styles/global.scss";
 
 .companyCard {
-  width: 100%;
+  min-width: 100%;
   display: flex;
-  flex-wrap: wrap;
   background-color: map-get($colors, "secondary");
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-bottom: 2em;
@@ -11,15 +10,47 @@
 
   & > div:first-child {
     margin-right: 2em;
+    img {
+      width: 200px;
+    }
   }
 
   .companyInfo {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
-    gap: 1em;
+    justify-content: space-around;
+
+    p {
+      margin-bottom: 1.5em;
+    }
+
+    ul {
+      margin-bottom: 1.5em;
+      li {
+        margin-left: 1em;
+      }
+    }
+
 
     button {
       width: 170px;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .companyImage {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .companyCard {
+    min-width: 85%;
+
+    .companyImage {
+      display: block;
     }
   }
 }

@@ -3,6 +3,8 @@ import "../../styles/global.scss";
 
 export function setUpListElement(icon, text, href) {
   const li = document.createElement("li");
+  li.classList.add("listElements");
+
   const a = document.createElement("a");
   a.href = href;
 

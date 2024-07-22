@@ -1,9 +1,8 @@
 @import "../../styles/global.scss";
 
 .projectCard {
-  width: 100%;
+  min-width: 100%;
   display: flex;
-  flex-wrap: wrap;
   background-color: map-get($colors, "secondary");
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-bottom: 2em;
@@ -11,16 +10,26 @@
 
   & > div:first-child {
     margin-right: 2em;
+    img {
+      width: 200px;
+    }
   }
 
   .projectInfo {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
-    gap: 1em;
+    justify-content: space-around;
+
+    p {
+      max-width: 55%;
+      margin-bottom: 1.5em;
+    }
 
     ul {
       display: flex;
       list-style: none;
+      margin-bottom: 1.5em;
 
       li {
         margin-left: 0;
@@ -30,6 +39,22 @@
 
     button {
       width: 170px;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .projectImage {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .projectCard {
+    min-width: 85%;
+
+    .projectImage {
+      display: block;
     }
   }
 }

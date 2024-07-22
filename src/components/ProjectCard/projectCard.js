@@ -8,7 +8,7 @@ export function setUpProjectCard(image, name, stack, description, web) {
   project.classList.add("projectCard");
 
   const projectImage = document.createElement("div");
-  projectImage.classList.add("hidden");
+  projectImage.classList.add("projectImage")
 
   const img = document.createElement("img");
   img.src = image;
@@ -36,11 +36,11 @@ export function setUpProjectCard(image, name, stack, description, web) {
     ul.append(li);
   });
   projectTitle.append(ul);
-  projectInfo.append(projectTitle);
-
+  
   const p = document.createElement("p");
   p.textContent = description;
-  projectInfo.append(p);
+  projectTitle.append(p);
+  projectInfo.append(projectTitle);
 
   projectInfo.append(
     setUpButton(

@@ -22,13 +22,45 @@ export function setUpProjects() {
 
   projects.append(
     setUpProjectCard(
-      //"https://media.licdn.com/dms/image/D4E0BAQEv9v_gcp3m3g/company-logo_200_200/0/1683718642523/unimat_prevencion_sl_logo?e=2147483647&v=beta&t=fkLtZg_lGpyv45VekL7BPWeDlI2rFaFt2meSpDaSqeU",
-      "",
+      "https://media.licdn.com/dms/image/D4E0BAQEv9v_gcp3m3g/company-logo_200_200/0/1683718642523/unimat_prevencion_sl_logo?e=2147483647&v=beta&t=fkLtZg_lGpyv45VekL7BPWeDlI2rFaFt2meSpDaSqeU",
       "Games Hub",
-      [
-        "Vite",
-        "SASS"
-      ],
+      ["Vite", "SASS"],
+      "",
+      "https://www.unimatprevencion.es/"
+    )
+  );
+  /* projects.append(
+    setUpProjectCard(
+      "https://media.licdn.com/dms/image/D4E0BAQEv9v_gcp3m3g/company-logo_200_200/0/1683718642523/unimat_prevencion_sl_logo?e=2147483647&v=beta&t=fkLtZg_lGpyv45VekL7BPWeDlI2rFaFt2meSpDaSqeU",
+      "Games Hub",
+      ["Vite", "SASS"],
+      "Project that brings together three classic games to play alone or with someone.",
+      "https://www.unimatprevencion.es/"
+    )
+  ); */
+  projects.append(
+    setUpProjectCard(
+      "https://media.licdn.com/dms/image/D4E0BAQEv9v_gcp3m3g/company-logo_200_200/0/1683718642523/unimat_prevencion_sl_logo?e=2147483647&v=beta&t=fkLtZg_lGpyv45VekL7BPWeDlI2rFaFt2meSpDaSqeU",
+      "Pinterest Clone",
+      ["Vite", "SASS", "Unsplash"],
+      "Project that simulates the pinterest application, being able to search for images and collections.",
+      "https://www.unimatprevencion.es/"
+    )
+  );
+  projects.append(
+    setUpProjectCard(
+      "https://media.licdn.com/dms/image/D4E0BAQEv9v_gcp3m3g/company-logo_200_200/0/1683718642523/unimat_prevencion_sl_logo?e=2147483647&v=beta&t=fkLtZg_lGpyv45VekL7BPWeDlI2rFaFt2meSpDaSqeU",
+      "Elden Ring Wiki Front-End",
+      ["React", "Bootstrap"],
+      "Project that brings together three classic games to play alone or with someone.",
+      "https://www.unimatprevencion.es/"
+    )
+  );
+  projects.append(
+    setUpProjectCard(
+      "https://media.licdn.com/dms/image/D4E0BAQEv9v_gcp3m3g/company-logo_200_200/0/1683718642523/unimat_prevencion_sl_logo?e=2147483647&v=beta&t=fkLtZg_lGpyv45VekL7BPWeDlI2rFaFt2meSpDaSqeU",
+      "Elden Ring Wiki Back-End",
+      ["Node Js", "Express Js", "MySql"],
       "Project that brings together three classic games to play alone or with someone.",
       "https://www.unimatprevencion.es/"
     )

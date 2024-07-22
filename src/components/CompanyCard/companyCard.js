@@ -8,7 +8,7 @@ export function setUpCompanycard(image, name, position, tasks, web) {
   company.classList.add("companyCard");
 
   const companyImage = document.createElement("div");
-  companyImage.classList.add("hidden");
+  companyImage.classList.add("companyImage");
 
   const img = document.createElement("img");
   img.src = image;
@@ -26,7 +26,6 @@ export function setUpCompanycard(image, name, position, tasks, web) {
   p.textContent = position;
   p.classList.add("remark");
   companyTitle.append(p);
-  companyInfo.append(companyTitle);
 
   const ul = document.createElement("ul");
   tasks.forEach((task) => {
@@ -34,7 +33,8 @@ export function setUpCompanycard(image, name, position, tasks, web) {
     li.textContent = task;
     ul.append(li);
   });
-  companyInfo.append(ul);
+  companyTitle.append(ul);
+  companyInfo.append(companyTitle);
 
   companyInfo.append(
     setUpButton(
