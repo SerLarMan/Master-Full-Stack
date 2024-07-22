@@ -44,7 +44,10 @@ export function setUpHeader(component) {
   const socials = document.createElement("div");
   socials.classList.add("socials");
   socials.append(
-    setUpIconButton("fa-brands fa-linkedin", "https://www.linkedin.com/in/sergio-lara-mantas-a03828179")
+    setUpIconButton(
+      "fa-brands fa-linkedin",
+      "https://www.linkedin.com/in/sergio-lara-mantas-a03828179"
+    )
   );
   socials.append(
     setUpIconButton("fa-brands fa-github", "https://github.com/SerLarMan")
@@ -52,6 +55,7 @@ export function setUpHeader(component) {
   presentationDiv.append(socials);
 
   const imageDiv = document.createElement("div");
+  imageDiv.classList.add("imageDiv");
 
   const userImage = document.createElement("img");
   userImage.src =

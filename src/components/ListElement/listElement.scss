@@ -1,7 +1,12 @@
 @import "../../styles/global.scss";
 
 li {
-  margin: 1.5em 0;
+  margin: 0 1em;
+  display: none;
+
+  &:first-child {
+    display: block;
+  }
 
   a {
     display: flex;
@@ -12,7 +17,11 @@ li {
     }
 
     i {
-      font-size: 1.6rem;
+      font-size: 1.2rem;
+    }
+
+    span {
+      margin-left: 0.5em;
     }
   }
 }

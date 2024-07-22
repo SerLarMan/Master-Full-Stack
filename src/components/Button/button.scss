@@ -1,0 +1,19 @@
+@import "../../styles/global.scss";
+
+.button {
+  background-color: map-get($colors, "primary");
+  color: map-get($colors, "secondary");
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 100px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  i {
+    margin-left: 1em;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: map-get($colors, "accentLight");
+  }
+}

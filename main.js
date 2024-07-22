@@ -13,11 +13,8 @@ const main = document.createElement("main");
 const footer = document.createElement("footer");
 
 app.append(setUpNav(nav));
-
-const div = document.createElement("div");
-div.append(setUpHeader(header));
-div.append(setUpMain(main));
-app.append(div);
+app.append(setUpHeader(header));
+app.append(setUpMain(main));
 app.append(setUpFooter(footer));
 
 const words = ["Front-End", "Back-End"];
@@ -56,6 +53,14 @@ function type() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+/* document.addEventListener("DOMContentLoaded", () => {
     setTimeout(type, typingSpeed);
+}); */
+
+const linkList = document.querySelector(".linkList");
+
+window.addEventListener("resize", () => {
+  if (window.matchMedia(`(min-width: 768px)`).matches) {
+    linkList.classList.remove("show");
+  }
 });

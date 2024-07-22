@@ -1,0 +1,35 @@
+@import "../../styles/global.scss";
+
+.projectCard {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: map-get($colors, "secondary");
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-bottom: 2em;
+  padding: 1em;
+
+  & > div:first-child {
+    margin-right: 2em;
+  }
+
+  .projectInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    ul {
+      display: flex;
+      list-style: none;
+
+      li {
+        margin-left: 0;
+        margin-right: 0.5em;
+      }
+    }
+
+    button {
+      width: 170px;
+    }
+  }
+}

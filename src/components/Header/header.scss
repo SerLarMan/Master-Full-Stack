@@ -3,10 +3,12 @@
 header {
   height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: space-around;
 
   & > div {
-    width: 50%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,10 +20,9 @@ header {
   }
 
   .presentationDiv {
-    max-width: 600px;
-    height: 15em;
-    align-items: start;
+    width: 100%;
     justify-content: space-between;
+    padding: 0 2em;
 
     h1 {
       font-size: 2.5rem;
@@ -33,23 +34,23 @@ header {
     }
 
     .socials {
+      width: 100%;
       display: flex;
+      justify-items: flex-start;
+      margin-top: 1em;
 
       & div:last-child {
         margin-left: 1em;
       }
     }
-
-    .remark {
-      color: map-get($colors, "accentLight");
-      font-weight: bold;
-    }
   }
 
-  img {
-    width: 350px;
-    border-radius: 100%;
-    filter: drop-shadow(15px 10px 4px rgba(0, 0, 0, 0.24));
+  .imageDiv {
+    img {
+      width: 350px;
+      border-radius: 100%;
+      filter: drop-shadow(15px 10px 4px rgba(0, 0, 0, 0.24));
+    }
   }
 }
 
@@ -65,5 +66,23 @@ header {
   50%,
   100% {
     opacity: 0;
+  }
+}
+
+
+@media (min-width: 768px) {
+  header {
+    margin: 0 10em;
+    flex-direction: row;
+
+    .presentationDiv {
+      align-items: flex-start;
+      padding: 0 5em;
+    }
+
+    .imageDiv {
+      align-items: flex-end;
+      padding: 0 5em 0 0;
+    }
   }
 }

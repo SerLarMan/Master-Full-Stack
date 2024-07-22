@@ -26,17 +26,6 @@ $sizes: (
   box-sizing: border-box;
 }
 
-#app {
-  position: relative;
-  display: flex;
-
-  & > div {
-    margin-left: 12em;
-    margin-right: 6em;
-    width: 100%;
-  }
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -45,16 +34,21 @@ body {
   color: map-get($colors, "black");
   background-color: map-get($colors, "secondary");
   font-family: "Rubik", sans-serif;
+  z-index: 1;
 }
 
 main {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 2em;
 
   section {
+    width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin-bottom: 2em;
   }
 }
@@ -64,8 +58,11 @@ a {
 }
 
 .sectionTitle {
+  width: 100%;
   display: flex;
+  justify-content: flex-start;
   align-items: center;
+  margin-bottom: 2em;
 
   .line {
     width: 100px;
@@ -77,4 +74,9 @@ a {
 
 .hidden {
   display: none;
+}
+
+.remark {
+  color: map-get($colors, "accentLight");
+  font-weight: bold;
 }

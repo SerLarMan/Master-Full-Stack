@@ -29,7 +29,6 @@ export function setUpSkills() {
   techSkills.append(techTitle);
 
   const techContainer = document.createElement("div");
-  techContainer.classList.add("techContainer");
 
   techContainer.append(setUpTechSkillCard("fa-brands fa-react", "React"));
   techContainer.append(setUpTechSkillCard("fa-brands fa-angular", "Angular"));

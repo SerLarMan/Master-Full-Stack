@@ -11,7 +11,6 @@ export function setUpListElement(icon, text, href) {
 
   const span = document.createElement("span");
   span.textContent = text;
-  span.classList.add("hidden");
 
   a.append(i);
   a.append(span);

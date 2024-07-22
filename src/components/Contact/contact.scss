@@ -1,20 +1,15 @@
 .contact {
-  flex-direction: row;
-  margin-bottom: 0;
-
   article {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-  }
-
-  .formArticle {
-    display: flex;
-    flex-direction: column;
+    width: 100%;
 
     form {
       display: flex;
       flex-direction: column;
+
+      textarea {
+        margin-bottom: 0.5em;
+        padding: 0.5em;
+      }
     }
   }
 }
