@@ -25,44 +25,35 @@ export function setUpProjects() {
       "https://media.licdn.com/dms/image/D4E0BAQEv9v_gcp3m3g/company-logo_200_200/0/1683718642523/unimat_prevencion_sl_logo?e=2147483647&v=beta&t=fkLtZg_lGpyv45VekL7BPWeDlI2rFaFt2meSpDaSqeU",
       "Games Hub",
       ["Vite", "SASS"],
-      "",
-      "https://www.unimatprevencion.es/"
-    )
-  );
-  /* projects.append(
-    setUpProjectCard(
-      "https://media.licdn.com/dms/image/D4E0BAQEv9v_gcp3m3g/company-logo_200_200/0/1683718642523/unimat_prevencion_sl_logo?e=2147483647&v=beta&t=fkLtZg_lGpyv45VekL7BPWeDlI2rFaFt2meSpDaSqeU",
-      "Games Hub",
-      ["Vite", "SASS"],
       "Project that brings together three classic games to play alone or with someone.",
       "https://www.unimatprevencion.es/"
     )
-  ); */
+  );
   projects.append(
     setUpProjectCard(
       "https://media.licdn.com/dms/image/D4E0BAQEv9v_gcp3m3g/company-logo_200_200/0/1683718642523/unimat_prevencion_sl_logo?e=2147483647&v=beta&t=fkLtZg_lGpyv45VekL7BPWeDlI2rFaFt2meSpDaSqeU",
       "Pinterest Clone",
       ["Vite", "SASS", "Unsplash"],
-      "Project that simulates the pinterest application, being able to search for images and collections.",
+      "Project that simulates the pinterest application, being able to search for images and collections and download any image.",
       "https://www.unimatprevencion.es/"
     )
   );
   projects.append(
     setUpProjectCard(
-      "https://media.licdn.com/dms/image/D4E0BAQEv9v_gcp3m3g/company-logo_200_200/0/1683718642523/unimat_prevencion_sl_logo?e=2147483647&v=beta&t=fkLtZg_lGpyv45VekL7BPWeDlI2rFaFt2meSpDaSqeU",
+      "https://hypercritic.org/wp-content/uploads-webpc/uploads/2022/07/ELDENRING_01_4K.jpeg.webp",
       "Elden Ring Wiki Front-End",
-      ["React", "Bootstrap"],
-      "Project that brings together three classic games to play alone or with someone.",
-      "https://www.unimatprevencion.es/"
+      ["React", "Bootstrap", "Axios"],
+      "Project that simulates a wik of the Elden Ring video game. Users can mark things achieved as well as obtain information. Data access through an api. User login. Administration panel.",
+      "https://github.com/SerLarMan/eldenringwiki-frontend"
     )
   );
   projects.append(
     setUpProjectCard(
-      "https://media.licdn.com/dms/image/D4E0BAQEv9v_gcp3m3g/company-logo_200_200/0/1683718642523/unimat_prevencion_sl_logo?e=2147483647&v=beta&t=fkLtZg_lGpyv45VekL7BPWeDlI2rFaFt2meSpDaSqeU",
+      "https://hypercritic.org/wp-content/uploads-webpc/uploads/2022/07/ELDENRING_01_4K.jpeg.webp",
       "Elden Ring Wiki Back-End",
       ["Node Js", "Express Js", "MySql"],
-      "Project that brings together three classic games to play alone or with someone.",
-      "https://www.unimatprevencion.es/"
+      "API developed for the above project. Access to data in a database. Password encryption. File upload.",
+      "https://github.com/SerLarMan/eldenringwiki-backend"
     )
   );
 

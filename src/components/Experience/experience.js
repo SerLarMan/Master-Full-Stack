@@ -27,9 +27,10 @@ export function setUpExperience() {
       "Unimat Prevención",
       "Junior Developer",
       [
-        "Hacer cosas",
-        "Dejar que una empresa me compre",
-        "Dejar que esa empresa me explote",
+        "Development of the Front-End of an ERP in Angular",
+        "API development in Spring",
+        "Creation and deployment of images in Docker",
+        "Use of Agile methodologies",
       ],
       "https://www.unimatprevencion.es/"
     )
@@ -39,7 +40,11 @@ export function setUpExperience() {
       "https://media.licdn.com/dms/image/D4E0BAQGGjSOnMxbn9Q/company-logo_200_200/0/1689245558940/indaws_logo?e=2147483647&v=beta&t=DqkLd184xy-1stxth6sx2BlUn349JegUGo4YNQ-2qRA",
       "InDaws",
       "Junior Developer",
-      ["Programar cosas movil", "Dejar que me roben tiempo y dinero"],
+      [
+        "Creation of modules for Odoo",
+        "Mobile application development with Flutter",
+        "Using non-relational databases like Firebase and Mongodb",
+      ],
       "https://www.indaws.es/"
     )
   );
